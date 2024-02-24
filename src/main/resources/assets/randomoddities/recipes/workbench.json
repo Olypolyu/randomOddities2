@@ -1,0 +1,23 @@
+{
+  "name": "randomoddities:workbench/paint_brush",
+  "type": "minecraft:crafting/shaped",
+  "pattern": [
+    "P"
+  ],
+  "symbols": [
+    {
+      "symbol": "P",
+      "stack": {
+        "key": "tile.planks.oak",
+        "amount": 1,
+        "meta": 0
+      }
+    }
+  ],
+  "result": {
+    "key": "tile.workbench",
+    "amount": 1,
+    "meta": 0
+  },
+  "consumeContainers": true
+}

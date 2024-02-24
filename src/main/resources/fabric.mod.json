@@ -1,17 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "randomoddities",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This mod aims to help new BTA modders.",
-  "authors": [
-    "Turnip Labs"
-  ],
-  "contact": {
-    "homepage": "",
-    "sources": ""
-  },
+  "name": "Random Oddities 2",
+	"description": "Random shite i added for fun.",
+	"authors": [
+		"kheprep"
+	],
+
+	"contact": {
+		"homepage": "",
+		"sources": "https://github.com/Olypolyu/random-oddties"
+	},
 
 	"icon": "icon.png",
   "license": "CC0-1.0",
@@ -19,20 +20,21 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-			"turniplabs.examplemod.ExampleMod"
+			"Olypolyu.randomoddities.RandomOddities"
     ],
 		"beforeGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"Olypolyu.randomoddities.RandomOddities"
 		],
 		"afterGameStart": [
-			"turniplabs.examplemod.ExampleMod"
+			"Olypolyu.randomoddities.RandomOddities"
 		],
 		"recipesReady": [
-			"turniplabs.examplemod.ExampleMod"
+			"Olypolyu.randomoddities.RandomOddities"
 		]
 	},
+
   "mixins": [
-      "examplemod.mixins.json"
+      "randomoddities.mixins.json"
   ],
 
   "depends": {
