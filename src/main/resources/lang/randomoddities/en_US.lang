@@ -32,8 +32,8 @@ tile.randomoddities.pumpkinPie.desc=somehow, you feel like this thing has been w
 
 
 // wind bottle
-item.randomoddities.windLamp.name=Wind Lamp
-item.randomoddities.windLamp.desc=It's wick seems to be a feather...
+item.randomoddities.wind_lamp.name=Wind Lamp
+item.randomoddities.wind_lamp.desc=It's wick seems to be a feather...
 
 // paint brushes
 item.randomoddities.paint_brush.white.name=White Paint Brush
@@ -87,54 +87,3 @@ item.randomoddities.paint_brush.black.desc=what a brush off...
 item.randomoddities.paint_brush.scrapper.name=Paint Scrapper
 item.randomoddities.paint_brush.scrapper.desc=(Only applicable to wood) Paint begone!
 
-// Spawn eggs
-item.randomoddities.spawn_egg.pig.name=Pig spawn egg
-item.randomoddities.spawn_egg.pig.desc=spawns a mob
-
-item.randomoddities.spawn_egg.cow.name=Cow spawn egg
-item.randomoddities.spawn_egg.cow.desc=spawns a mob
-
-item.randomoddities.spawn_egg.chicken.name=Chicken spawn egg
-item.randomoddities.spawn_egg.chicken.desc=spawns a mob
-
-item.randomoddities.spawn_egg.sheep.name=Sheep spawn egg
-item.randomoddities.spawn_egg.sheep.desc=spawns a mob
-
-item.randomoddities.spawn_egg.squid.name=Squid spawn egg
-item.randomoddities.spawn_egg.squid.desc=spawns a mob
-
-item.randomoddities.spawn_egg.wolf.name=Wolf spawn egg
-item.randomoddities.spawn_egg.wolf.desc=spawns a mob
-
-item.randomoddities.spawn_egg.zombie.name=Zombie spawn egg
-item.randomoddities.spawn_egg.zombie.desc=spawns a mob
-
-item.randomoddities.spawn_egg.creeper.name=Creeper spawn egg
-item.randomoddities.spawn_egg.creeper.desc=spawns a mob
-
-item.randomoddities.spawn_egg.skeleton.name=Skeleton spawn egg
-item.randomoddities.spawn_egg.skeleton.desc=spawns a mob
-
-item.randomoddities.spawn_egg.spider.name=Spider spawn egg
-item.randomoddities.spawn_egg.spider.desc=spawns a mob
-
-item.randomoddities.spawn_egg.slime.name=Slime spawn egg
-item.randomoddities.spawn_egg.slime.desc=spawns a mob
-
-item.randomoddities.spawn_egg.pigman.name=Zombie Pigman spawn egg
-item.randomoddities.spawn_egg.pigman.desc=spawns a mob
-
-item.randomoddities.spawn_egg.ghast.name=Ghast spawn egg
-item.randomoddities.spawn_egg.ghast.desc=spawns a mob
-
-item.randomoddities.spawn_egg.giant.name=Giant Zombie spawn egg
-item.randomoddities.spawn_egg.giant.desc=spawns a mob
-
-item.randomoddities.spawn_egg.armoured_zombie.name=Armoured Zombie spawn egg
-item.randomoddities.spawn_egg.armoured_zombie.desc=spawns a mob
-
-item.randomoddities.spawn_egg.monster.name=Human spawn egg
-item.randomoddities.spawn_egg.monster.desc=spawns a mob
-
-item.randomoddities.spawn_egg.boar.name=Boar spawn egg
-item.randomoddities.spawn_egg.boar.desc=spawns a mob

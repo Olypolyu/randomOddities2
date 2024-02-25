@@ -3,9 +3,11 @@ package Olypolyu.randomoddities;
 import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import Olypolyu.randomoddities.items.RandomOdditiesItems;
 
+import Olypolyu.randomoddities.tile.TileEntityBubbleColumn;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
@@ -33,8 +35,11 @@ public class RandomOddities implements ModInitializer, GameStartEntrypoint, Reci
 
 	@Override
 	public void beforeGameStart() {
+		new RandomOdditiesAssets().initializeAssets();
 		new RandomOdditiesItems().initializeItems();
 		new RandomOdditiesBlocks().initializeBlocks();
+
+		EntityHelper.Core.createTileEntity(TileEntityBubbleColumn.class, "bubble_column");
 	}
 
 	@Override

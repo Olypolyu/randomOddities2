@@ -21,8 +21,7 @@ public class ItemPaintBrush extends Item {
 
     public ItemPaintBrush(int id, int color) {
         super(id);
-		this.notInCreativeMenu = false;
-		this.setMaxDamage(24);
+		this.setMaxDamage(64);
 		this.maxStackSize = 1;
 		this.bFull3D = true;
 		this.colour = color;
@@ -32,7 +31,7 @@ public class ItemPaintBrush extends Item {
 
 		// if you are a modder and reading this,
 		// you can make your own mod's items work with the brush by just adding the results to the map.
-		// just need to write your own painter class that implements IRandomOdditiesPainter.
+		// it requires a block ID and a IRandomOdditiesPainter.
 
 		// already painted non-complex
 		Arrays.stream(new int[] {
@@ -59,6 +58,9 @@ public class ItemPaintBrush extends Item {
 		painterMap.put(Block.slabPlanksOak.id, new RandomOdditiesPainter(true,true, Block.slabPlanksOakPainted.id));
 
 		/*
+
+		all of this is from random oddities 1. ignore.
+
 		// base blocks
         switch (block) {
 
