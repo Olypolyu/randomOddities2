@@ -1,5 +1,7 @@
 package Olypolyu.randomoddities.items;
 
+import Olypolyu.randomoddities.RandomOddities;
+import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import Olypolyu.randomoddities.util.RandomOdditiesPainter;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.entity.EntityLiving;
@@ -16,16 +18,27 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class ItemPaintBrush extends Item {
-    private final int colour;
-	public static final HashMap<Integer, IRandomOdditiesPainter> painterMap = new HashMap<>();
-
-    public ItemPaintBrush(int id, int color) {
-        super(id);
+	public ItemPaintBrush(int id, int color) {
+		super(id);
 		this.setMaxDamage(64);
 		this.maxStackSize = 1;
 		this.bFull3D = true;
 		this.colour = color;
 	}
+
+    private final int colour;
+
+	public static final String[] colours = {
+		"white", "orange", "magenta", "lightBlue", "yellow", "lime", "pink", "gray", "silver", "cyan", "purple",
+		"blue", "brown", "green", "red", "black"
+	};
+
+	public static final int[] colourValues = {
+		15790320, 15435844, 12801229, 6719955, 14602026, 4312372, 14188952, 4408131, 9738647, 2651799, 8073150,
+		2437522, 5320730, 3887386, 11743532, 1973019
+	};
+
+	public static final HashMap<Integer, IRandomOdditiesPainter> painterMap = new HashMap<>();
 
 	static {
 
@@ -35,6 +48,7 @@ public class ItemPaintBrush extends Item {
 
 		// already painted non-complex
 		Arrays.stream(new int[] {
+			RandomOdditiesBlocks.paintedGlass.id,
 			Block.fencePlanksOakPainted.id,
 			Block.planksOakPainted.id,
 			Block.lampActive.id,
@@ -56,36 +70,7 @@ public class ItemPaintBrush extends Item {
 		painterMap.put(Block.fencegatePlanksOak.id, new RandomOdditiesPainter(true,true, Block.fencegatePlanksOakPainted.id));
 		painterMap.put(Block.stairsPlanksOak.id, new RandomOdditiesPainter(true,true, Block.stairsPlanksOakPainted.id));
 		painterMap.put(Block.slabPlanksOak.id, new RandomOdditiesPainter(true,true, Block.slabPlanksOakPainted.id));
-
-		/*
-
-		all of this is from random oddities 1. ignore.
-
-		// base blocks
-        switch (block) {
-
-			 case 190: // Glass
-                if (this.color == 0) return false; // glass is already white.
-                //paint(RandomOddities.paintedGlass.blockID, false, world, i, j, k, itemstack, entityplayer);
-                return true;
-            }
-
-        // already painted blocks.
-        switch (block) {
-
-            case 713: // painted glass
-                // set to normal glass instead of white painted glass.
-                if(this.color == 0) {
-                    world.setBlockWithNotify(i, j, k, 190);
-                    return true;
-                }
-
-                // turns out it only updates properly if you set block and metadata.
-                world.setBlockAndMetadataWithNotify(i, j, k, RandomOdditiesBlocks.paintedGlass.blockID, this.color);
-                itemstack.damageItem(1, entityplayer);
-                return true;
-                }
-		 */
+		painterMap.put(Block.glass.id, new RandomOdditiesPainter(false, true, RandomOdditiesBlocks.paintedGlass.id));
 	}
 
     public boolean useItemOnEntity(ItemStack itemstack, EntityLiving entityliving, EntityPlayer entityplayer) {

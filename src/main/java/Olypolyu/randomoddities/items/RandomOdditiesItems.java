@@ -3,17 +3,13 @@ package Olypolyu.randomoddities.items;
 import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.core.item.Item;
 import turniplabs.halplibe.helper.ItemHelper;
-import turniplabs.halplibe.helper.TextureHelper;
 
 import static Olypolyu.randomoddities.RandomOddities.MOD_ID;
+import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 
 public class RandomOdditiesItems {
 	private static int randomOdditiesIds = 17000;
 
-	public static final String[] colours = {
-		"white", "orange", "magenta", "lightBlue", "yellow", "lime", "pink", "gray", "lightGray", "cyan", "purple",
-		"blue", "brown", "green", "red", "black"
-	};
 	public static final Item[] paintBrushes = new Item[colours.length];
 
 	static {

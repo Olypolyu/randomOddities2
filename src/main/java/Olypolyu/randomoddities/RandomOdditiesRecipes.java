@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static Olypolyu.randomoddities.RandomOddities.MOD_ID;
-import static Olypolyu.randomoddities.items.RandomOdditiesItems.colours;
+import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 
 public class RandomOdditiesRecipes {
 	public static final RecipeNamespace RANDOM_ODDITIES = RecipeBuilder.getRecipeNamespace(MOD_ID);

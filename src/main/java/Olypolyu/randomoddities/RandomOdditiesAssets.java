@@ -5,6 +5,8 @@ import net.minecraft.client.entity.fx.EntityFX;
 import turniplabs.halplibe.helper.ParticleHelper;
 import turniplabs.halplibe.helper.TextureHelper;
 
+import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
+
 public class RandomOdditiesAssets {
 
 	public static final int[] emptyWindLampTex = TextureHelper.getOrCreateItemTexture(RandomOddities.MOD_ID, "emptyWindBottle.png");
@@ -13,6 +15,7 @@ public class RandomOdditiesAssets {
 
 	public static final String[] particleSizes = {"tiny", "small", "medium", "large"};
 	public static final int[] paintParticleIndex = new int[particleSizes.length];
+	public static final int[] glassPaintedIndex = new int[colours.length];
 
 	public void initializeAssets() {
 		RandomOddities.info("loaded assets.");
@@ -28,6 +31,10 @@ public class RandomOdditiesAssets {
 						this.particleTextureIndex = paintParticleIndex[finalSize];
 					}
 				});
+		}
+
+		for (int colour = 0; colour < colours.length; colour++) {
+			glassPaintedIndex[colour] = TextureHelper.getOrCreateBlockTextureIndex(RandomOddities.MOD_ID, String.format("glass/%s.png", colours[colour]));
 		}
 	}
 

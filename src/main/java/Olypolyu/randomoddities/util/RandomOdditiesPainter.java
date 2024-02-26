@@ -1,18 +1,16 @@
 package Olypolyu.randomoddities.util;
 
-import Olypolyu.randomoddities.RandomOddities;
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesPainter;
 import Olypolyu.randomoddities.particle.EntityPaintFX;
+import static Olypolyu.randomoddities.RandomOdditiesAssets.particleSizes;
+import static Olypolyu.randomoddities.items.ItemPaintBrush.colourValues;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.entity.player.EntityPlayer;
-import net.minecraft.core.item.ItemDye;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.helper.Color;
 import net.minecraft.core.world.World;
-
-import static Olypolyu.randomoddities.RandomOdditiesAssets.particleSizes;
 
 public class RandomOdditiesPainter implements IRandomOdditiesPainter {
 	private final boolean isComplex;
@@ -42,16 +40,17 @@ public class RandomOdditiesPainter implements IRandomOdditiesPainter {
 		}
 
 		Minecraft mc = Minecraft.getMinecraft(Minecraft.class);
-		Color particleColour = new Color();
-		particleColour.setARGB(ItemDye.field_31002_bk[ItemDye.dyeColors.length - 1 - colour]);
 		Block block = Block.getBlock(result);
+
+		Color particleColour = new Color();
+		particleColour.setARGB(colourValues[colour]);
 
 		for (int particle = 0; particle < 24; particle++) {
 			mc.effectRenderer.addEffect(
 				new EntityPaintFX(world.rand.nextInt(particleSizes.length),
-					(float) particleColour.getRed() /255,
-					(float) particleColour.getBlue() /255,
-					(float) particleColour.getGreen() /255,
+					particleColour.getRed() / 255F,
+					particleColour.getBlue() / 255F,
+					particleColour.getGreen() / 255F,
 					world,
 					x + block.maxX + block.minX - world.rand.nextDouble(),
 					y + block.maxY + block.minY - world.rand.nextDouble(),

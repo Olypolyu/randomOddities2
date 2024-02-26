@@ -1,6 +1,5 @@
 package Olypolyu.randomoddities.blocks;
 
-import Olypolyu.randomoddities.RandomOddities;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockStone;
@@ -28,6 +27,12 @@ public class RandomOdditiesBlocks {
 		.setTopTexture("bubbleTop.png")
 		.setBottomTexture("TrampolineBottom.png")
 		.build(new BlockBubbleGenerator("flintBlock", randomOdditiesIds++, Material.metal));
+
+	public static Block paintedGlass = new BlockBuilder(MOD_ID)
+		.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
+		.setHardness(0.5f)
+		.setResistance(0.8f)
+		.build(new BlockPaintedGlass("glassPainted", randomOdditiesIds++, Material.glass, true));
 
 	public void initializeBlocks() {
 		//RandomOddities.LOGGER.info("RandomOddities has loaded blocks");
