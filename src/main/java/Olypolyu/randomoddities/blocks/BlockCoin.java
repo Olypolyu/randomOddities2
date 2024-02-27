@@ -1,11 +1,10 @@
 package Olypolyu.randomoddities.blocks;
 
+import Olypolyu.randomoddities.interfaces.IRandomOdditiesCoinAmount;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.EntityPlayer;
-import net.minecraft.core.item.Item;
-import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.phys.AABB;
 import net.minecraft.core.world.World;
 
@@ -30,6 +29,9 @@ public class BlockCoin extends Block {
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		if (entity instanceof EntityPlayer) {
 			world.setBlockWithNotify(x, y, z, 0);
+
+			((IRandomOdditiesCoinAmount) entity).randomOddities$addCoinAmount(1);
+			world.playSoundAtEntity(entity, "randomoddities.coin_chime",0.65F,1.0F);
 		}
 	}
 }

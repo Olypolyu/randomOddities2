@@ -1,7 +1,9 @@
 package Olypolyu.randomoddities;
 
+import Olypolyu.randomoddities.gui.components.ComponentCoinCounter;
 import net.minecraft.client.entity.fx.EntityDiggingFX;
 import net.minecraft.client.entity.fx.EntityFX;
+import net.minecraft.client.gui.hud.*;
 import turniplabs.halplibe.helper.ParticleHelper;
 import turniplabs.halplibe.helper.SoundHelper;
 import turniplabs.halplibe.helper.TextureHelper;
@@ -11,13 +13,15 @@ import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 
 public class RandomOdditiesAssets {
 
+	// textures
 	public static final int[] emptyWindLampTex = TextureHelper.getOrCreateItemTexture(MOD_ID, "emptyWindBottle.png");
 	public static final int[] windLampTex = TextureHelper.getOrCreateItemTexture(MOD_ID, "windBottle.png");
-
 
 	public static final String[] particleSizes = {"tiny", "small", "medium", "large"};
 	public static final int[] paintParticleIndex = new int[particleSizes.length];
 	public static final int[] glassPaintedIndex = new int[colours.length];
+
+	public static HudComponent COIN_COUNTER = HudComponents.register(new ComponentCoinCounter("randomoddities.coin_counter", new SnapLayout(HudComponents.CROSSHAIR, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
 
 	public void initializeAssets() {
 		RandomOddities.info("loaded assets.");
@@ -40,6 +44,7 @@ public class RandomOdditiesAssets {
 		}
 
 		SoundHelper.Client.addSound(MOD_ID, "trampoline_bounce.ogg");
+		SoundHelper.Client.addSound(MOD_ID, "coin_chime.ogg");
 
 	}
 

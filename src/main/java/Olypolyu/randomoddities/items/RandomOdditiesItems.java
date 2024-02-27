@@ -24,6 +24,8 @@ public class RandomOdditiesItems {
 
 	public static final Item paintScrapper = ItemHelper.createItem(MOD_ID, new ItemPaintScrapper(randomOdditiesIds++).setKey("paint_brush.scrapper"), "paintBrush/scrapper.png");
 
+	public static final Item coinStack = ItemHelper.createItem(MOD_ID, new ItemCoinStack(randomOdditiesIds++, 10).setKey("coin_stack"), "coin_stack.png");
+
 	public void initializeItems() {
 		RandomOddities.info("RandomOddities has loaded items");
 	}

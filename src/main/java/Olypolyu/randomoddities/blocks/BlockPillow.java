@@ -17,6 +17,11 @@ public class BlockPillow extends Block {
 	}
 
 	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	@Override
 	public void onEntityWalking(World world, int x, int y, int z, Entity entity) {
 		this.onEntityCollidedWithBlock(world, x, y, z, entity);
 	}

@@ -11,6 +11,8 @@ import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
+import java.util.HashMap;
+
 
 public class RandomOddities implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
     public static final String MOD_ID = "randomoddities";
@@ -27,6 +29,8 @@ public class RandomOddities implements ModInitializer, GameStartEntrypoint, Reci
 	public static void error(Object arg) {
 		LOGGER.error(String.valueOf(arg));
 	}
+
+	public static HashMap<String, Integer> theBank = new HashMap<>();
 
     @Override
     public void onInitialize() {

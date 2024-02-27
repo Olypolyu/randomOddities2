@@ -5,11 +5,11 @@ tile.randomoddities.test.name= T E S T
 tile.randomoddities.painted_glass.white.name=Painted Glass
 tile.randomoddities.painted_glass.white.desc=Who even PAINTS glass???
 
-tile.randomoddities.FireStriker.name=Fire Striker Block
-tile.randomoddities.FireStriker.desc=Remote arson!
+tile.randomoddities.fire_striker.name=Fire Striker Block
+tile.randomoddities.fire_striker.desc=Remote arson!
 
-tile.randomoddities.flintBlock.name=Flint Block
-tile.randomoddities.flintBlock.desc=A block made out of flint... what else were you expecting?
+tile.randomoddities.flint_block.name=Flint Block
+tile.randomoddities.flint_block.desc=A block made out of flint... what else were you expecting?
 
 tile.randomoddities.trampoline.name=Trampoline
 tile.randomoddities.trampoline.desc=Up and away! (to your death.)
@@ -17,23 +17,33 @@ tile.randomoddities.trampoline.desc=Up and away! (to your death.)
 tile.randomoddities.pillow.name=Pillow
 tile.randomoddities.pillow.desc=squishy and confy.
 
-tile.randomoddities.BubbleGenerator.name=Bubble Generator
-tile.randomoddities.BubbleGenerator.desc=Is this a bathhouse episode?
+tile.randomoddities.bubble_generator.name=Bubble Generator
+tile.randomoddities.bubble_generator.desc=Is this a bathhouse episode?
 
-tile.randomoddities.fishTrap.name=Fish Trap
-tile.randomoddities.fishTrap.desc=Textures made by Loafio
+tile.randomoddities.fish_trap.name=Fish Trap
+tile.randomoddities.fish_trap.desc=Textures made by Loafio
+
+tile.randomoddities.vending_machine.name=Vending Machine
+tile.randomoddities.gui.vending_machine.title=Vending Machine
+tile.randomoddities.vending_machine.desc=Ka-ching!
+
+tile.randomoddities.coin_Block.name=Coin
+tile.randomoddities.coin_Block.desc=Seems to have the face of a british man stamped onto it.
 
 // pie
 item.randomoddities.food.pumpkin_pie.name=Pumpkin Pie
-item.randomoddities.pumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+item.randomoddities.pumpkin_pie.desc=somehow, you feel like this thing has been with you all along.
 
-tile.randomoddities.pumpkinPie.name=Pumpkin Pie
-tile.randomoddities.pumpkinPie.desc=somehow, you feel like this thing has been with you all along.
+tile.randomoddities.pumpkin_pie.name=Pumpkin Pie
+tile.randomoddities.pumpkin_pie.desc=somehow, you feel like this thing has been with you all along.
 
 
-// wind bottle
+// items
 item.randomoddities.wind_lamp.name=Wind Lamp
 item.randomoddities.wind_lamp.desc=It's wick seems to be a feather...
+
+tile.randomoddities.coin_stack.name=Coin
+tile.randomoddities.coin_stack.desc=Seems to have the face of a british man stamped onto it.
 
 // paint brushes
 item.randomoddities.paint_brush.white.name=White Paint Brush

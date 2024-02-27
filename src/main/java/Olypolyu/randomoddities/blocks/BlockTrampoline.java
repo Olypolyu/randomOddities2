@@ -4,6 +4,7 @@ import net.minecraft.core.block.Block;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.EntityLiving;
+import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.phys.AABB;
 import net.minecraft.core.world.World;
 
@@ -22,6 +23,36 @@ public class BlockTrampoline extends Block {
 		this.launchY = launchY;
 		this.launchZ = launchZ;
 		this.setBlockBounds(0F, 0F, 0F, 1.0F, 0.5F, 1.0F);
+	}
+
+	@Override
+	public boolean isSolidRender() {
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+		return canBlockStay(world, x, y, z);
+	}
+
+	@Override
+	public boolean canBlockStay(World world, int x, int y, int z) {
+        return world.isBlockNormalCube(x, y - 1, z);
+    }
+
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, int blockId) {
+		if (!canBlockStay(world, x, y, z)) {
+			world.setBlock(x,y,z, 0);
+			world.dropItem(x, y, z, new ItemStack(RandomOdditiesBlocks.trampoline));
+		}
+
+		super.onNeighborBlockChange(world, x, y, z, blockId);
 	}
 
 	public void jump(Entity entity) {
@@ -57,11 +88,6 @@ public class BlockTrampoline extends Block {
 		}
 
 		return (float) motion;
-	}
-
-	@Override
-	public boolean isSolidRender() {
-		return false;
 	}
 
 	@Override

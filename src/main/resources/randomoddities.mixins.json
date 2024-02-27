@@ -6,7 +6,10 @@
 
     "mixins": [
       "RandomOdditiesTrampolineMixin",
-      "RandomOdditiesAirSupplyMixin"
+      "RandomOdditiesAirSupplyMixin",
+      "RandomOdditiesCoinMixin",
+      "RandomOdditiesGUICore",
+      "RandomOdditiesGUISP"
     ],
 
     "client": [
