@@ -1,0 +1,21 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "randomoddities:block/coin_block",
+		"particle": "randomoddities:block/coin_block"
+	},
+	"elements": [
+		{
+			"from": [3, 2, 6],
+			"to": [13, 14, 10],
+			"faces": {
+				"north": {"uv": [0, 4, 10, 16], "texture": "#0"},
+				"east": {"uv": [10, 4, 14, 16], "texture": "#0"},
+				"south": {"uv": [0, 4, 10, 16], "texture": "#0"},
+				"west": {"uv": [10, 4, 14, 16], "texture": "#0"},
+				"up": {"uv": [10, 0, 0, 4], "texture": "#0"},
+				"down": {"uv": [0, 0, 10, 4], "texture": "#0"}
+			}
+		}
+	]
+}

@@ -1,14 +1,12 @@
 package Olypolyu.randomoddities.items;
 
-import Olypolyu.randomoddities.mixin.RandomOdditiesEntityMixin;
+import Olypolyu.randomoddities.mixin.RandomOdditiesAirSupplyMixin;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.sound.SoundType;
 import net.minecraft.core.world.World;
-import turniplabs.halplibe.helper.SoundHelper;
-import turniplabs.halplibe.helper.TextureHelper;
 
 import java.util.Random;
 
@@ -39,8 +37,8 @@ public class ItemWindLamp extends Item {
         if ( itemstack.getMetadata() >= this.getMaxDamage() ) return itemstack;
             else itemstack.damageItem(1,entityplayer);
 
-        ((RandomOdditiesEntityMixin) entityplayer).setFallDistance(0f);
-        entityplayer.airSupply = ((RandomOdditiesEntityMixin) entityplayer).getMaxAir();
+		entityplayer.fallDistance = 0;
+        entityplayer.airSupply = ((RandomOdditiesAirSupplyMixin) entityplayer).getMaxAir();
 		entityplayer.yd = 0.5F;
 
 		world.playSoundEffect(SoundType.WORLD_SOUNDS, entityplayer.x, entityplayer.y, entityplayer.z, "random.fizz", 1.5F, (1.0F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F) * 0.7F);

@@ -33,6 +33,7 @@ public class ItemPaintBrush extends Item {
 		"blue", "brown", "green", "red", "black"
 	};
 
+	// int from hex. #41CD34 -> 4312372.
 	public static final int[] colourValues = {
 		15790320, 15435844, 12801229, 6719955, 14602026, 4312372, 14188952, 4408131, 9738647, 2651799, 8073150,
 		2437522, 5320730, 3887386, 11743532, 1973019

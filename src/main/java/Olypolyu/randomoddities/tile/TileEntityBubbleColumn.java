@@ -1,6 +1,6 @@
 package Olypolyu.randomoddities.tile;
 
-import Olypolyu.randomoddities.mixin.RandomOdditiesEntityMixin;
+import Olypolyu.randomoddities.mixin.RandomOdditiesAirSupplyMixin;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.block.material.Material;
@@ -43,7 +43,7 @@ public class TileEntityBubbleColumn extends TileEntity {
                 if ( entity instanceof EntityPlayer) {
 
                     // slowly regenerate air points
-                    if ( entity.airSupply < ((RandomOdditiesEntityMixin) entity).getMaxAir() - 2 )
+                    if ( entity.airSupply < ((RandomOdditiesAirSupplyMixin) entity).getMaxAir() - 2 )
                         entity.airSupply = entity.airSupply + 2;
 
                     // don't lift the player if they are sneaking
