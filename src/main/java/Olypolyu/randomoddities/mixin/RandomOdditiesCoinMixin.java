@@ -33,6 +33,7 @@ public class RandomOdditiesCoinMixin extends EntityLiving implements IRandomOddi
 
 	@Unique
 	public int randomOddities$getCoinAmount() {
+		if (RandomOddities.theBank.get(this.username) == null) return 0;
 		return RandomOddities.theBank.get(this.username);
 	}
 
@@ -43,7 +44,7 @@ public class RandomOdditiesCoinMixin extends EntityLiving implements IRandomOddi
 
 	@Override
 	public void randomOddities$addCoinAmount(int amount) {
-		RandomOddities.theBank.put(this.username, RandomOddities.theBank.get(this.username) + amount);
+		RandomOddities.theBank.put(this.username, this.randomOddities$getCoinAmount() + amount);
 	}
 
 }

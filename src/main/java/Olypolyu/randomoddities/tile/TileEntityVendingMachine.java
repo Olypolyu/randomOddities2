@@ -1,30 +1,104 @@
 package Olypolyu.randomoddities.tile;
 
+import Olypolyu.randomoddities.items.RandomOdditiesItems;
 import Olypolyu.randomoddities.util.DataVendingMachineEntry;
 import com.mojang.nbt.CompoundTag;
 import com.mojang.nbt.ListTag;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.IInventory;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class TileEntityVendingMachine extends TileEntity implements IInventory {
 
-	public List<DataVendingMachineEntry> products;
+	public static final int pageSize = 4;
+	private int currentPage = 0;
 
-	public static int pageSize = 4;
-	private ItemStack[] inventory = new ItemStack[27];
+	private DataVendingMachineEntry selected = null;
+	public List<DataVendingMachineEntry> products = new ArrayList<>();
+	private ItemStack[] inventory = new ItemStack[28];
+
+	private DataVendingMachineEntry productsGet(int index) {
+		try {
+			return products.get(index);
+		}
+		catch(Exception exception) { return null; }
+	}
+
+	public void setSelected(DataVendingMachineEntry selected) {
+		this.selected = selected;
+	}
+
+	public DataVendingMachineEntry getSelected() {
+		return selected;
+	}
+
+	public int getPageAmount() {
+		if (this.products == null || this.products.isEmpty()) return 0;
+		return this.products.size() / pageSize;
+	}
+
+	public DataVendingMachineEntry getItemStackInPage(int index) {
+		return getPage(currentPage)[index];
+	}
+
+	public DataVendingMachineEntry[] getPage(int pageIndex) {
+		DataVendingMachineEntry[] result = new DataVendingMachineEntry[pageSize];
+
+		for (int page = 0; page < pageSize; page++) {
+			result[page] = productsGet(pageIndex*pageSize + page);
+		}
+
+		return result;
+	}
+
+	public boolean hasPreviousPage() {
+		return currentPage != 0;
+	}
+
+	public boolean hasNextPage() {
+		return currentPage < getPageAmount();
+	}
+
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void nextPage() {
+		currentPage++;
+	}
+
+	public void previousPage() {
+		if (currentPage == 0) return;
+		currentPage--;
+	}
+
+	{
+		for (int brush = 0; brush < 15; brush++) {
+			this.products.add(new DataVendingMachineEntry(new ItemStack(RandomOdditiesItems.paintBrushes[brush]), new Random().nextInt(10)+5));
+		}
+		this.products.remove(2);
+	}
+
 
 	@Override
 	public int getSizeInventory() {
-		return this.inventory.length;
+		return 27;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		return null;
+		if (i == 27) {
+			if (selected == null) return null;
+			else return selected.getProduct();
+		}
+
+		return inventory[i];
 	}
 
 	@Override
@@ -99,20 +173,6 @@ public class TileEntityVendingMachine extends TileEntity implements IInventory {
 				this.inventory[byte0] = ItemStack.readItemStackFromNbt(nbttagcompound1);
 			}
 		}
-	}
-
-	public int getPageAmount() {
-		return (this.products.size() % pageSize == 0) ? this.products.size()/pageSize : this.products.size()/pageSize + 1;
-	}
-
-	public DataVendingMachineEntry[] getpage(int pageIndex) {
-		DataVendingMachineEntry[] result = new DataVendingMachineEntry[pageSize];
-
-		for (int page = 0; page < pageSize; page++) {
-			result[page] = products.get(pageIndex*pageSize + page);
-		}
-
-		return result;
 	}
 
 	@Override

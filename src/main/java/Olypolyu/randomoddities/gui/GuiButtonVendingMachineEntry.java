@@ -1,23 +1,15 @@
 package Olypolyu.randomoddities.gui;
 
-import Olypolyu.randomoddities.items.RandomOdditiesItems;
+import Olypolyu.randomoddities.util.DataVendingMachineEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiRenderItem;
 import net.minecraft.client.render.FontRenderer;
-import net.minecraft.core.item.ItemStack;
 import org.lwjgl.opengl.GL11;
-
-import java.util.Random;
 
 import static Olypolyu.randomoddities.gui.GUIVendingMachine.texture;
 
 public class GuiButtonVendingMachineEntry extends GuiButton {
-	private int price = 555555;
-	private ItemStack itemStack = new ItemStack(RandomOdditiesItems.paintBrushes[new Random().nextInt(15)]);
-
-	private int width = 80;
-	private int height = 22;
 
 	private final int u = 176;
 	private final int v = 0;
@@ -25,13 +17,25 @@ public class GuiButtonVendingMachineEntry extends GuiButton {
 	private final int vSelected = 22;
 	public boolean selected = false;
 
+	private DataVendingMachineEntry entry = null;
+
 	public GuiButtonVendingMachineEntry(int id, int xPosition, int yPosition) {
 		super(id, xPosition, yPosition, "");
+		this.width = 80;
+		this.height = 22;
 	}
 
 	public void setPosition(int x, int y) {
 		setX(x);
 		setY(y);
+	}
+
+	public void setEntry(DataVendingMachineEntry entry) {
+		this.entry = entry;
+	}
+
+	public DataVendingMachineEntry getEntry() {
+		return entry;
 	}
 
 	@Override
@@ -44,10 +48,9 @@ public class GuiButtonVendingMachineEntry extends GuiButton {
 
 			FontRenderer fontrenderer = mc.fontRenderer;
 			int textColor = this.selected ? 16777120 : 0xFFFFFFFF;
-			this.drawString(fontrenderer, "x"+this.price, this.xPosition + 33, this.yPosition + 7, textColor);
-
+			this.drawString(fontrenderer, "x"+ this.entry.getPrice(), this.xPosition + 33, this.yPosition + 7, textColor);
 			GuiRenderItem itemRenderer = new GuiRenderItem(mc);
-			itemRenderer.render(this.itemStack, this.xPosition + 3, this.yPosition + 3);
+			itemRenderer.render(this.entry.getProduct(), this.xPosition + 3, this.yPosition + 3);
 		}
 	}
 }

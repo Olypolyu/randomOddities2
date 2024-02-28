@@ -1,5 +1,6 @@
 package Olypolyu.randomoddities.gui.container;
 
+import Olypolyu.randomoddities.gui.SlotPurchase;
 import Olypolyu.randomoddities.tile.TileEntityVendingMachine;
 import net.minecraft.core.InventoryAction;
 import net.minecraft.core.entity.player.EntityPlayer;
@@ -16,7 +17,7 @@ public class ContainerVendingMachine extends Container {
     public ContainerVendingMachine(InventoryPlayer inventoryPlayer, TileEntityVendingMachine tile){
         this.tile = tile;
 
-		addSlot(new Slot(tile,0 , 123, 22));
+		addSlot(new SlotPurchase(inventoryPlayer,tile.getSelected(),27 , 123, 22));
 
 		for(int crosshairRow = 0; crosshairRow < 9; crosshairRow++) {
 			addSlot(new Slot(inventoryPlayer, crosshairRow, 8 + crosshairRow * 18, 170));
