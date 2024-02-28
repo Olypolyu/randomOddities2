@@ -60,6 +60,10 @@ public class RandomOdditiesBlocks {
 		.build(new BlockCoin("coin_Block", randomOdditiesIds++, Material.metal));
 
 	public static Block vendingMachine = new BlockBuilder(MOD_ID)
+		.setSideTextures("vending_machine/sides.png")
+		.setTopTexture("vending_machine/top.png")
+		.setBottomTexture("vending_machine/bottom.png")
+		.setNorthTexture("vending_machine/front.png")
 		.setHardness(1.3F)
 		.setResistance(2.0F)
 		.build(new BlockVendingMachine("vending_machine", randomOdditiesIds++, Material.metal));

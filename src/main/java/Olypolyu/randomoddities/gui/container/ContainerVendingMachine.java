@@ -16,36 +16,33 @@ public class ContainerVendingMachine extends Container {
     public ContainerVendingMachine(InventoryPlayer inventoryPlayer, TileEntityVendingMachine tile){
         this.tile = tile;
 
-        this.addSlot(new Slot(tile, 0, 56, 17));
-        this.addSlot(new Slot(tile, 1, 56, 53));
-        this.addSlot(new Slot(tile, 2, 116, 35));
+		addSlot(new Slot(tile,0 , 123, 22));
 
-        for(int row = 0; row < 3; row++)
-        {
-            for(int column = 0; column < 9; column++)
-            {
-                addSlot(new Slot(inventoryPlayer, column + row * 9 + 9, 8 + column * 18, 112 + row * 18));
+		for(int crosshairRow = 0; crosshairRow < 9; crosshairRow++) {
+			addSlot(new Slot(inventoryPlayer, crosshairRow, 8 + crosshairRow * 18, 170));
+		}
+
+		for(int row = 0; row < 3; row++) {
+            for(int column = 0; column < 9; column++) {
+                addSlot(new Slot(inventoryPlayer, column + (row * 9) + 9, 8 + column * 18, 112 + row * 18));
             }
-
         }
-        for(int crosshairRow = 0; crosshairRow < 9; crosshairRow++)
-        {
-            addSlot(new Slot(inventoryPlayer, crosshairRow, 8 + crosshairRow * 18, 170));
-        }
+
     }
 
-    @Override
-    public List<Integer> getMoveSlots(InventoryAction inventoryAction, Slot slot, int i, EntityPlayer entityPlayer) {
-        return null;
-    }
 
-    @Override
-    public List<Integer> getTargetSlots(InventoryAction inventoryAction, Slot slot, int i, EntityPlayer entityPlayer) {
-        return null;
-    }
+	@Override
+	public List<Integer> getMoveSlots(InventoryAction inventoryAction, Slot slot, int i, EntityPlayer entityPlayer) {
+		return null;
+	}
 
-    @Override
-    public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
-        return tile.canInteractWith(entityPlayer);
-    }
+	@Override
+	public List<Integer> getTargetSlots(InventoryAction inventoryAction, Slot slot, int i, EntityPlayer entityPlayer) {
+		return null;
+	}
+
+	@Override
+	public boolean isUsableByPlayer(EntityPlayer entityPlayer) {
+		return tile.canInteractWith(entityPlayer);
+	}
 }
