@@ -40,8 +40,7 @@ public class GUIButtonCustom extends GuiButton {
 	@Override
 	protected int getButtonState(boolean hovered) {
 		if (!enabled) return 2;
-		if (this.pressed && hovered) return 3;
-		if (this.pressed) return 2;
+		if (this.pressed) return 3;
 		if (hovered) return 0;
 		return 1;
 	}

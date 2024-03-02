@@ -1,6 +1,5 @@
 package Olypolyu.randomoddities.items;
 
-import Olypolyu.randomoddities.RandomOddities;
 import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import Olypolyu.randomoddities.util.RandomOdditiesPainter;
 import net.minecraft.core.block.Block;
@@ -43,7 +42,7 @@ public class ItemPaintBrush extends Item {
 
 	static {
 
-		// if you are a modder and reading this,
+		// if you are a modder reading this,
 		// you can make your own mod's items work with the brush by just adding the results to the map.
 		// it requires a block ID and a IRandomOdditiesPainter.
 

@@ -4,17 +4,19 @@ import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import Olypolyu.randomoddities.items.RandomOdditiesItems;
 
 import Olypolyu.randomoddities.tile.TileEntityBubbleColumn;
+import Olypolyu.randomoddities.tile.TileEntityVendingMachine;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.EntityHelper;
+import turniplabs.halplibe.util.ClientStartEntrypoint;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
 import java.util.HashMap;
 
 
-public class RandomOddities implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
+public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
     public static final String MOD_ID = "randomoddities";
     private static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -43,12 +45,12 @@ public class RandomOddities implements ModInitializer, GameStartEntrypoint, Reci
 		new RandomOdditiesItems().initializeItems();
 		new RandomOdditiesBlocks().initializeBlocks();
 
-		EntityHelper.Core.createTileEntity(TileEntityBubbleColumn.class, "bubble_column");
+		EntityHelper.Core.createTileEntity(TileEntityBubbleColumn.class, "randomoddities$bubble_column");
+		EntityHelper.Core.createTileEntity(TileEntityVendingMachine.class, "randomoddities$vending_machine");
 	}
 
 	@Override
 	public void afterGameStart() {
-
 	}
 
 	@Override

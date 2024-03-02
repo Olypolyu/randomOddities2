@@ -1,27 +1,34 @@
 package Olypolyu.randomoddities.gui;
 
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesCoinAmount;
-import Olypolyu.randomoddities.util.DataVendingMachineEntry;
+import Olypolyu.randomoddities.tile.TileEntityVendingMachine;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.InventoryPlayer;
 import net.minecraft.core.player.inventory.slot.Slot;
 
 public class SlotPurchase extends Slot {
-	private final DataVendingMachineEntry entry;
+	private final TileEntityVendingMachine tile;
 
-	public SlotPurchase(InventoryPlayer inventoryPlayer, DataVendingMachineEntry entry, int id, int x, int y) {
+	public SlotPurchase(InventoryPlayer inventoryPlayer, TileEntityVendingMachine tile, int id, int x, int y) {
 		super(inventoryPlayer, id, x, y);
-		this.entry = entry;
+		this.tile = tile;
 	}
 
 	public ItemStack getStack() {
-		if (this.entry == null) return null;
-		return this.entry.getProduct();
+		if (this.tile.getProducts()[this.tile.getSelected()] == null) return null;
+		return this.tile.getProducts()[this.tile.getSelected()].getProduct();
 	}
 
 	@Override
 	public void onPickupFromSlot(ItemStack itemstack) {
-		((IRandomOdditiesCoinAmount)((InventoryPlayer)this.inventory).player).randomOddities$addCoinAmount(this.entry.getPrice() * -1);
+		if (!((IRandomOdditiesCoinAmount)((InventoryPlayer)this.inventory).player).randomOddities$subtractCoinAmount(this.tile.getProducts()[this.tile.getSelected()].getPrice())) {
+			return;
+		}
 		super.onPickupFromSlot(itemstack);
+	}
+
+	@Override
+	public boolean canPutStackInSlot(ItemStack itemstack) {
+		return false;
 	}
 }

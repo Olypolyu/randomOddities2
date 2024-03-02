@@ -1,10 +1,10 @@
 package Olypolyu.randomoddities.items;
 
-import Olypolyu.randomoddities.RandomOddities;
+import Olypolyu.randomoddities.RandomOdditiesCore;
 import net.minecraft.core.item.Item;
 import turniplabs.halplibe.helper.ItemHelper;
 
-import static Olypolyu.randomoddities.RandomOddities.MOD_ID;
+import static Olypolyu.randomoddities.RandomOdditiesCore.MOD_ID;
 import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 
 public class RandomOdditiesItems {
@@ -27,6 +27,6 @@ public class RandomOdditiesItems {
 	public static final Item coinStack = ItemHelper.createItem(MOD_ID, new ItemCoinStack(randomOdditiesIds++, 10).setKey("coin_stack"), "coin_stack.png");
 
 	public void initializeItems() {
-		RandomOddities.info("RandomOddities has loaded items");
+		RandomOdditiesCore.info("RandomOddities has loaded items");
 	}
 }

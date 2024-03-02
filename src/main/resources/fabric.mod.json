@@ -19,18 +19,27 @@
 
   "environment": "*",
   "entrypoints": {
+
     "main": [
-			"Olypolyu.randomoddities.RandomOddities"
+			"Olypolyu.randomoddities.RandomOdditiesCore"
     ],
 		"beforeGameStart": [
-			"Olypolyu.randomoddities.RandomOddities"
+			"Olypolyu.randomoddities.RandomOdditiesCore"
 		],
 		"afterGameStart": [
-			"Olypolyu.randomoddities.RandomOddities"
+			"Olypolyu.randomoddities.RandomOdditiesCore"
 		],
 		"recipesReady": [
-			"Olypolyu.randomoddities.RandomOddities"
+			"Olypolyu.randomoddities.RandomOdditiesCore"
+		],
+
+		"beforeClientStart" : [
+			"Olypolyu.randomoddities.RandomOdditiesClient"
+		],
+		"afterClientStart" : [
+			"Olypolyu.randomoddities.RandomOdditiesClient"
 		]
+
 	},
 
   "mixins": [

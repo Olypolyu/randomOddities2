@@ -1,14 +1,11 @@
 package Olypolyu.randomoddities;
 
-import Olypolyu.randomoddities.gui.components.ComponentCoinCounter;
-import net.minecraft.client.entity.fx.EntityDiggingFX;
 import net.minecraft.client.entity.fx.EntityFX;
-import net.minecraft.client.gui.hud.*;
 import turniplabs.halplibe.helper.ParticleHelper;
 import turniplabs.halplibe.helper.SoundHelper;
 import turniplabs.halplibe.helper.TextureHelper;
 
-import static Olypolyu.randomoddities.RandomOddities.MOD_ID;
+import static Olypolyu.randomoddities.RandomOdditiesCore.MOD_ID;
 import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 
 public class RandomOdditiesAssets {
@@ -21,10 +18,8 @@ public class RandomOdditiesAssets {
 	public static final int[] paintParticleIndex = new int[particleSizes.length];
 	public static final int[] glassPaintedIndex = new int[colours.length];
 
-	public static HudComponent COIN_COUNTER = HudComponents.register(new ComponentCoinCounter("randomoddities.coin_counter", new SnapLayout(HudComponents.CROSSHAIR, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
-
 	public void initializeAssets() {
-		RandomOddities.info("loaded assets.");
+		RandomOdditiesCore.info("loaded assets.");
 
 		for (int size = 0; size < particleSizes.length; size++) {
 			paintParticleIndex[size] = TextureHelper.getOrCreateParticleTextureIndex(MOD_ID, String.format("paint/splash_%s.png", particleSizes[size]));

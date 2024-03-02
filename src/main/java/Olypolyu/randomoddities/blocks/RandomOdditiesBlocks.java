@@ -1,6 +1,6 @@
 package Olypolyu.randomoddities.blocks;
 
-import Olypolyu.randomoddities.RandomOddities;
+import Olypolyu.randomoddities.RandomOdditiesCore;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockStone;
@@ -10,7 +10,7 @@ import turniplabs.halplibe.helper.BlockBuilder;
 import useless.dragonfly.helper.ModelHelper;
 import useless.dragonfly.model.block.BlockModelDragonFly;
 
-import static Olypolyu.randomoddities.RandomOddities.MOD_ID;
+import static Olypolyu.randomoddities.RandomOdditiesCore.MOD_ID;
 
 public class RandomOdditiesBlocks {
 	private static int randomOdditiesIds = 1400;
@@ -71,7 +71,7 @@ public class RandomOdditiesBlocks {
 	// TODO: add rotation to coins, add animation to trampoline.
 
 	public void initializeBlocks() {
-		RandomOddities.info("RandomOddities has loaded blocks");
+		RandomOdditiesCore.info("RandomOddities has loaded blocks");
 	}
 }
 

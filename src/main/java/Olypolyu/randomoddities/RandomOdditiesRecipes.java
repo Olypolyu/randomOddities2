@@ -16,7 +16,7 @@ import turniplabs.halplibe.helper.RecipeBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Olypolyu.randomoddities.RandomOddities.MOD_ID;
+import static Olypolyu.randomoddities.RandomOdditiesCore.MOD_ID;
 import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 
 public class RandomOdditiesRecipes {

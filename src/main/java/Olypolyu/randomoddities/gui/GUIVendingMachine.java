@@ -10,6 +10,8 @@ import net.minecraft.core.lang.I18n;
 import net.minecraft.core.player.inventory.InventoryPlayer;
 import org.lwjgl.opengl.GL11;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class GUIVendingMachine extends GuiContainer {
@@ -30,8 +32,6 @@ public class GUIVendingMachine extends GuiContainer {
 	protected GuiButton nextPageButton;
 
 	protected GuiButtonVendingMachineEntry[] entries = new GuiButtonVendingMachineEntry[4];
-
-	HashMap<String, Boolean> buttons = new HashMap<>();
 
 	@Override
 	public void init() {
@@ -68,6 +68,8 @@ public class GUIVendingMachine extends GuiContainer {
 				entries[index].visible = true;
 				entries[index].enabled = true;
 				entries[index].setEntry(entry);
+
+				entries[index].selected = Arrays.asList(tile.getProducts()).indexOf(entry) == tile.getSelected();
 			}
 		}
 
@@ -86,6 +88,7 @@ public class GUIVendingMachine extends GuiContainer {
 		if (button instanceof GUIButtonCustom) {
 			((GUIButtonCustom) button).pressed = true;
 		}
+
 		super.buttonPressed(button);
 	}
 
@@ -93,10 +96,7 @@ public class GUIVendingMachine extends GuiContainer {
 	protected void buttonReleased(GuiButton button) {
 
 		if (button instanceof GuiButtonVendingMachineEntry) {
-			for (GuiButtonVendingMachineEntry entry : entries) {
-				entry.selected = button.id == entry.id;
-				tile.setSelected(entry.getEntry());
-			}
+			tile.setSelected(Arrays.asList(tile.getProducts()).indexOf(((GuiButtonVendingMachineEntry)button).getEntry()));
 		}
 
 		if (button instanceof GUIButtonCustom) {
@@ -105,7 +105,6 @@ public class GUIVendingMachine extends GuiContainer {
 
 		if (button.id == nextPageButton.id) tile.nextPage();
 		if (button.id == lastPageButton.id) tile.previousPage();
-
 		super.buttonReleased(button);
 	}
 

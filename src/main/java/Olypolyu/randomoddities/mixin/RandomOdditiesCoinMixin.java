@@ -1,6 +1,6 @@
 package Olypolyu.randomoddities.mixin;
 
-import Olypolyu.randomoddities.RandomOddities;
+import Olypolyu.randomoddities.RandomOdditiesCore;
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesCoinAmount;
 import com.mojang.nbt.CompoundTag;
 import net.minecraft.core.entity.EntityLiving;
@@ -23,28 +23,36 @@ public class RandomOdditiesCoinMixin extends EntityLiving implements IRandomOddi
 
 	@Inject(method = "readAdditionalSaveData", at = @At("HEAD"))
 	private void injectReadNBT(CompoundTag tag, CallbackInfo ci) {
-		RandomOddities.theBank.put(this.username, tag.getInteger("randomOddities$coinAmount"));
+		RandomOdditiesCore.theBank.put(this.username, tag.getInteger("randomOddities$coinAmount"));
 	}
 
 	@Inject(method = "addAdditionalSaveData", at = @At("HEAD"))
 	private void injectWriteNBT(CompoundTag tag, CallbackInfo ci) {
-		tag.putInt("randomOddities$coinAmount", RandomOddities.theBank.get(this.username));
+		tag.putInt("randomOddities$coinAmount", this.randomOddities$getCoinAmount());
 	}
 
 	@Unique
 	public int randomOddities$getCoinAmount() {
-		if (RandomOddities.theBank.get(this.username) == null) return 0;
-		return RandomOddities.theBank.get(this.username);
+		if (RandomOdditiesCore.theBank.get(this.username) == null) return 0;
+		return RandomOdditiesCore.theBank.get(this.username);
 	}
 
 	@Unique
 	public void randomOddities$setCoinAmount(int amount) {
-		RandomOddities.theBank.put(this.username, amount);
+		RandomOdditiesCore.theBank.put(this.username, amount);
 	}
 
 	@Override
 	public void randomOddities$addCoinAmount(int amount) {
-		RandomOddities.theBank.put(this.username, this.randomOddities$getCoinAmount() + amount);
+		RandomOdditiesCore.theBank.put(this.username, this.randomOddities$getCoinAmount() + amount);
+	}
+
+	@Override
+	public boolean randomOddities$subtractCoinAmount(int amount) {
+		if (this.randomOddities$getCoinAmount() < amount) return false;
+
+		randomOddities$addCoinAmount(-amount);
+		return true;
 	}
 
 }

@@ -23,7 +23,7 @@ public class RandomOdditiesMixinPlugin implements IMixinConfigPlugin {
 
 	@Override
 	public void onLoad(String mixinPackage) {
-		RandomOddities.info(AETHER_STRING + " found, managing mixins.");
+		RandomOdditiesCore.info(AETHER_STRING + " found, managing mixins.");
 	}
 
 	@Override
