@@ -1,6 +1,8 @@
 package Olypolyu.randomoddities.gui;
 
 import Olypolyu.randomoddities.gui.container.ContainerVendingMachine;
+import Olypolyu.randomoddities.gui.widgets.GUIButtonCustom;
+import Olypolyu.randomoddities.gui.widgets.GuiButtonVendingMachineEntry;
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesCoinAmount;
 import Olypolyu.randomoddities.tile.TileEntityVendingMachine;
 import Olypolyu.randomoddities.util.DataVendingMachineEntry;
@@ -10,9 +12,7 @@ import net.minecraft.core.lang.I18n;
 import net.minecraft.core.player.inventory.InventoryPlayer;
 import org.lwjgl.opengl.GL11;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class GUIVendingMachine extends GuiContainer {
 
@@ -111,6 +111,6 @@ public class GUIVendingMachine extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer() {
 		super.drawGuiContainerForegroundLayer();
-		fontRenderer.drawString(I18n.getInstance().translateKey("tile.randomoddities.gui.vending_machine.title"),6,-22, 0xFF404040);
+		fontRenderer.drawString(I18n.getInstance().translateKey(I18n.getInstance().translateKey("tile.randomoddities.vending_machine.name")),6,-22, 0xFF404040);
 	}
 }

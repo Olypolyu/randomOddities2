@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.gui;
+package Olypolyu.randomoddities.gui.widgets;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

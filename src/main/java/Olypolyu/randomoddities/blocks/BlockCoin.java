@@ -10,8 +10,13 @@ import net.minecraft.core.world.World;
 
 public class BlockCoin extends Block {
 
-	public BlockCoin(String key, int id, Material material) {
+	private final int amountMax;
+	private final int amountMin;
+
+	public BlockCoin(String key, int id, Material material, int amountMax, int amountMin) {
 		super(key, id, material);
+		this.amountMax = amountMax;
+		this.amountMin = amountMin;
 		this.immovable = true;
 	}
 
@@ -30,8 +35,27 @@ public class BlockCoin extends Block {
 		if (entity instanceof EntityPlayer) {
 			world.setBlockWithNotify(x, y, z, 0);
 
-			((IRandomOdditiesCoinAmount) entity).randomOddities$addCoinAmount(1);
+			int coinAmount = world.rand.nextInt(this.amountMax - this.amountMin) + this.amountMin;
+			((IRandomOdditiesCoinAmount) entity).randomOddities$addCoinAmount(world.rand.nextInt(this.amountMax - this.amountMin) + this.amountMin);
 			world.playSoundAtEntity(entity, "randomoddities.coin_chime",0.65F,1.0F);
+
+			for ( int coin = 0; coin < coinAmount; coin++) {
+				int motionMod = world.rand.nextBoolean() ? 1 : -1;
+				double degrees = Math.toRadians((double) (360/coinAmount) * coin);
+				double radius = 1.25;
+				world.spawnParticle(
+					"coin",
+					x + 0.5 + (Math.cos(degrees) * radius),
+					y + 0.5,
+					z + 0.5 + (Math.sin(degrees) * radius),
+					world.rand.nextDouble() / 4 * motionMod,
+					world.rand.nextDouble() / 4 * motionMod,
+					world.rand.nextDouble() / 4 * motionMod
+				);
+			}
 		}
-	}
+
+        super.onEntityCollidedWithBlock(world, x, y, z, entity);
+    }
+
 }

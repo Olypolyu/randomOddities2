@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.gui;
+package Olypolyu.randomoddities.gui.widgets;
 
 import Olypolyu.randomoddities.util.DataVendingMachineEntry;
 import net.minecraft.client.Minecraft;
@@ -7,17 +7,16 @@ import net.minecraft.client.gui.GuiRenderItem;
 import net.minecraft.client.render.FontRenderer;
 import org.lwjgl.opengl.GL11;
 
-import static Olypolyu.randomoddities.gui.GUIVendingMachine.texture;
-
 public class GuiButtonVendingMachineEntry extends GuiButton {
-
-	private final int u = 176;
-	private final int v = 0;
 
 	private final int vSelected = 22;
 	public boolean selected = false;
 
-	private DataVendingMachineEntry entry = null;
+	protected final int u = 176;
+	protected final int v = 0;
+
+	protected DataVendingMachineEntry entry = null;
+	protected static final String texture = "/assets/randomoddities/gui/vending_machine_GUI.png";
 
 	public GuiButtonVendingMachineEntry(int id, int xPosition, int yPosition) {
 		super(id, xPosition, yPosition, "");

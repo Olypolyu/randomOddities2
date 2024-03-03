@@ -9,10 +9,10 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.EntityHelper;
-import turniplabs.halplibe.util.ClientStartEntrypoint;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -20,16 +20,26 @@ public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint, 
     public static final String MOD_ID = "randomoddities";
     private static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static void info(Object arg) {
-		LOGGER.info(String.valueOf(arg));
+	public static String concatenate(Object ...args){
+		if (args.length > 1) {
+			StringBuilder result = new StringBuilder();
+			for (int arg = 0; arg < args.length; arg++) {
+				result.append(args[arg]);
+				if(arg != args.length - 1) result.append(", ");
+			}
+			return result.toString();
+		}
+		else return String.valueOf(args[0]);
 	}
 
-	public static void warn(Object arg) {
-		LOGGER.warn(String.valueOf(arg));
+	public static void info(Object ...args) {
+		LOGGER.info(concatenate(args));
 	}
-
-	public static void error(Object arg) {
-		LOGGER.error(String.valueOf(arg));
+	public static void warn(Object ...args) {
+		LOGGER.warn(concatenate(args));
+	}
+	public static void error(Object ...args) {
+		LOGGER.error(concatenate(args));
 	}
 
 	public static HashMap<String, Integer> theBank = new HashMap<>();

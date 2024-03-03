@@ -23,27 +23,24 @@ tile.randomoddities.bubble_generator.desc=Is this a bathhouse episode?
 tile.randomoddities.fish_trap.name=Fish Trap
 tile.randomoddities.fish_trap.desc=Textures made by Loafio
 
-tile.randomoddities.vending_machine.name=Vending Machine
+tile.randomoddities.vending_machine.name=Vending Machine [WIP]
 tile.randomoddities.gui.vending_machine.title=Vending Machine
 tile.randomoddities.vending_machine.desc=Ka-ching!
 
 tile.randomoddities.coin_Block.name=Coin
 tile.randomoddities.coin_Block.desc=Seems to have the face of a british man stamped onto it.
 
-// pie
-item.randomoddities.food.pumpkin_pie.name=Pumpkin Pie
+item.randomoddities.coin_stack.name=Coin
+item.randomoddities.coin_stack.desc=Seems to have the face of a british man stamped onto it.
+
+item.randomoddities.pumpkin_pie.name=Pumpkin Pie
 item.randomoddities.pumpkin_pie.desc=somehow, you feel like this thing has been with you all along.
 
 tile.randomoddities.pumpkin_pie.name=Pumpkin Pie
 tile.randomoddities.pumpkin_pie.desc=somehow, you feel like this thing has been with you all along.
 
-
-// items
 item.randomoddities.wind_lamp.name=Wind Lamp
 item.randomoddities.wind_lamp.desc=It's wick seems to be a feather...
-
-tile.randomoddities.coin_stack.name=Coin
-tile.randomoddities.coin_stack.desc=Seems to have the face of a british man stamped onto it.
 
 // paint brushes
 item.randomoddities.paint_brush.white.name=White Paint Brush

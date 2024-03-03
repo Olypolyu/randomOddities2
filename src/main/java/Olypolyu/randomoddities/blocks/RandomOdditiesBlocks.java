@@ -3,6 +3,7 @@ package Olypolyu.randomoddities.blocks;
 import Olypolyu.randomoddities.RandomOdditiesCore;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockFire;
 import net.minecraft.core.block.BlockStone;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
@@ -21,7 +22,7 @@ public class RandomOdditiesBlocks {
 		.setHardness(0.5f)
 		.setResistance(0.8f)
 		.setTextures("flint_block.png")
-		.build(new BlockStone("flint_block", randomOdditiesIds++));
+		.build(new BlockStone("flint_block", randomOdditiesIds++).withTags(BlockTags.MINEABLE_BY_PICKAXE));
 
 	public static Block bubbleColumn = new BlockBuilder(MOD_ID)
 		.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
@@ -30,7 +31,7 @@ public class RandomOdditiesBlocks {
 		.setSideTextures("bubble_generator/sides.png")
 		.setTopTexture("bubble_generator/top.png")
 		.setBottomTexture("trampoline/bottom.png")
-		.build(new BlockBubbleGenerator("bubble_generator", randomOdditiesIds++, Material.metal));
+		.build(new BlockBubbleGenerator("bubble_generator", randomOdditiesIds++, Material.metal).withTags(BlockTags.MINEABLE_BY_PICKAXE));
 
 	public static Block paintedGlass = new BlockBuilder(MOD_ID)
 		.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
@@ -57,7 +58,7 @@ public class RandomOdditiesBlocks {
 		.setBlockModel(new BlockModelDragonFly(ModelHelper.getOrCreateBlockModel(MOD_ID, "coin_block.json")))
 		.setHardness(9999.0F)
 		.setResistance(9999.0F)
-		.build(new BlockCoin("coin_Block", randomOdditiesIds++, Material.metal));
+		.build(new BlockCoin("coin_Block", randomOdditiesIds++, Material.metal, 15, 5));
 
 	public static Block vendingMachine = new BlockBuilder(MOD_ID)
 		.setSideTextures("vending_machine/sides.png")
@@ -66,7 +67,27 @@ public class RandomOdditiesBlocks {
 		.setNorthTexture("vending_machine/front.png")
 		.setHardness(1.3F)
 		.setResistance(2.0F)
-		.build(new BlockVendingMachine("vending_machine", randomOdditiesIds++, Material.metal));
+		.build(new BlockVendingMachine("vending_machine", randomOdditiesIds++, Material.metal).withTags(BlockTags.MINEABLE_BY_PICKAXE, BlockTags.NOT_IN_CREATIVE_MENU));
+
+	public static Block fireStriker = new BlockBuilder(MOD_ID)
+		.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
+		.setHardness(1.0F)
+		.setResistance(1.0F)
+		.build(new BlockFireStriker("fire_striker", randomOdditiesIds++, Material.stone).withTags(BlockTags.MINEABLE_BY_PICKAXE));
+
+	public static Block pumpkinPie = new BlockBuilder(MOD_ID)
+		.setSideTextures("pumpkin_pie/sides.png")
+		.setTopTexture("pumpkin_pie/top.png")
+		.setBottomTexture("pumpkin_pie/bottom.png")
+		.setHardness(1.3F)
+		.setResistance(0.0F)
+		.build(new BlockPumpkinPie("pumpkin_pie", randomOdditiesIds++).withTags(BlockTags.MINEABLE_BY_PICKAXE));
+
+	public static Block fishTrap = new BlockBuilder(MOD_ID)
+		.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
+		.setHardness(1.0F)
+		.setResistance(1.0F)
+		.build(new BlockFishTrap("fire_striker", randomOdditiesIds++, Material.plant).withTags(BlockTags.MINEABLE_BY_PICKAXE));
 
 	// TODO: add rotation to coins, add animation to trampoline.
 

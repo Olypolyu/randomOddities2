@@ -1,6 +1,7 @@
 package Olypolyu.randomoddities.gui.components;
 
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesCoinAmount;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiHudDesigner;
@@ -37,7 +38,7 @@ public class ComponentCoinCounter extends MovableHudComponent {
 
 	@Override
 	public int getXSize(Minecraft mc) {
-		String text = "x" + ((IRandomOdditiesCoinAmount)mc.thePlayer).randomOddities$getCoinAmount();
+		String text = "x" + ((IRandomOdditiesCoinAmount) mc.thePlayer).randomOddities$getCoinAmount();
 		return iconSize + spacing + mc.fontRenderer.getStringWidth(text);
 	}
 
@@ -53,7 +54,7 @@ public class ComponentCoinCounter extends MovableHudComponent {
 
 	@Override
 	public boolean isVisible(Minecraft minecraft) {
-		return true;
+		return ((IRandomOdditiesCoinAmount) mc.thePlayer).randomOddities$getCoinAmount() > 0;
 	}
 
 	@Override

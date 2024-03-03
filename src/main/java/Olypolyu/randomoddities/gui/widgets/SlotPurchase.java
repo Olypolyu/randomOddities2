@@ -1,4 +1,4 @@
-package Olypolyu.randomoddities.gui;
+package Olypolyu.randomoddities.gui.widgets;
 
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesCoinAmount;
 import Olypolyu.randomoddities.tile.TileEntityVendingMachine;

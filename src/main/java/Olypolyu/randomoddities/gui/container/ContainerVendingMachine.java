@@ -1,6 +1,6 @@
 package Olypolyu.randomoddities.gui.container;
 
-import Olypolyu.randomoddities.gui.SlotPurchase;
+import Olypolyu.randomoddities.gui.widgets.SlotPurchase;
 import Olypolyu.randomoddities.tile.TileEntityVendingMachine;
 import net.minecraft.core.InventoryAction;
 import net.minecraft.core.entity.player.EntityPlayer;
