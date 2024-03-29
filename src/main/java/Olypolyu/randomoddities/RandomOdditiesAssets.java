@@ -57,6 +57,10 @@ public class RandomOdditiesAssets {
 		SoundHelper.Client.addSound(MOD_ID, "trampoline_bounce.ogg");
 		SoundHelper.Client.addSound(MOD_ID, "coin_chime.ogg");
 
+		SoundHelper.Client.addSound(MOD_ID, "metal_pipe_zero.ogg");
+		SoundHelper.Client.addSound(MOD_ID, "metal_pipe_one.ogg");
+		SoundHelper.Client.addSound(MOD_ID, "metal_pipe_two.ogg");
+
 	}
 
 }

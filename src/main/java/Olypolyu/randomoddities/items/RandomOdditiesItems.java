@@ -4,7 +4,6 @@ import Olypolyu.randomoddities.RandomOdditiesCore;
 import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemPlaceable;
-import net.minecraft.core.item.block.ItemBlock;
 import turniplabs.halplibe.helper.ItemHelper;
 
 import static Olypolyu.randomoddities.RandomOdditiesCore.MOD_ID;
@@ -29,7 +28,7 @@ public class RandomOdditiesItems {
 
 	public static final Item coinStack = ItemHelper.createItem(MOD_ID, new ItemCoinStack(randomOdditiesIds++, 15, 5).setKey("coin_stack"), "coin_stack.png");
 	public static final Item itemPumpkinPie = ItemHelper.createItem(MOD_ID, new ItemPlaceable("pumpkin_pie", randomOdditiesIds++, RandomOdditiesBlocks.pumpkinPie).setIconCoord(13, 3));
-
+	public static final Item shield = ItemHelper.createItem(MOD_ID, new ItemShield(randomOdditiesIds++, 84, 0.60F, 0.90F, 1F).setKey("shield"), "shield.png");
 	public void initializeItems() {
 		RandomOdditiesCore.info("RandomOddities has loaded items");
 	}

@@ -16,9 +16,11 @@ public class RandomOdditiesMixinPlugin implements IMixinConfigPlugin {
 	private static final Supplier<Boolean> TRUE = () -> true;
 
 	private static final String AETHER_STRING = "aether";
+	private static final String BONUS_BLOCKS_STRING = "bonusblocks";
 
 	private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.<String, Supplier<Boolean>> builder()
 		.put("Olypolyu.randomoddities.mixin.RandomOdditiesTrampolineMixin",		() -> !FabricLoader.getInstance().isModLoaded(AETHER_STRING))
+		.put("Olypolyu.randomoddities.mixin.RandomOdditiesTrampolineMixin",		() -> !FabricLoader.getInstance().isModLoaded(BONUS_BLOCKS_STRING))
 		.build();
 
 	@Override

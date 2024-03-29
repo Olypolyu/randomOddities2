@@ -15,18 +15,18 @@ public class RandomOdditiesTrampolineMixin {
     @Shadow
     public double y;
     @Unique
-    public double prevY = y;
+    public double randomoddities$prevY = y;
     @Unique
-    public double deltaY;
+    public double randomoddities$deltaY;
 
     @Inject(method = "baseTick()V", at = @At(value ="HEAD"))
     private void tick(CallbackInfo ci){
-        deltaY = y - prevY;
-        prevY = y;
+        randomoddities$deltaY = y - randomoddities$prevY;
+        randomoddities$prevY = y;
     }
 
     @Redirect(method = "move(DDD)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/util/helper/MathHelper;floor_double(D)I", ordinal = 5))
     private int extendBlockRange(double d){
-        return MathHelper.floor_double(((Entity)(Object)this).bb.minY + 0.001 + deltaY);
+        return MathHelper.floor_double(((Entity)(Object)this).bb.minY + 0.001 + randomoddities$deltaY);
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.core.block.BlockFire;
 import net.minecraft.core.block.BlockStone;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.data.tag.Tag;
 import turniplabs.halplibe.helper.BlockBuilder;
 import useless.dragonfly.helper.ModelHelper;
 import useless.dragonfly.model.block.BlockModelDragonFly;

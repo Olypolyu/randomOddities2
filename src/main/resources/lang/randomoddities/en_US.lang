@@ -42,6 +42,9 @@ tile.randomoddities.pumpkin_pie.desc=somehow, you feel like this thing has been 
 item.randomoddities.wind_lamp.name=Wind Lamp
 item.randomoddities.wind_lamp.desc=It's wick seems to be a feather...
 
+item.randomoddities.shield.name=Shield
+item.randomoddities.shield.desc=Negate attacks and launches enemies back while held.
+
 // paint brushes
 item.randomoddities.paint_brush.white.name=White Paint Brush
 item.randomoddities.paint_brush.white.desc=what a brush off...
