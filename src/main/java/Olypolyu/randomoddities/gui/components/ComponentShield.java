@@ -80,13 +80,9 @@ public class ComponentShield extends MovableHudComponent {
 
 		if (opStack.isPresent()) {
 			ItemStack stack = opStack.get();
-
-			if (stack.getData().getBoolean("active")) {
-				int durationMax = ((ItemShield) stack.getItem()).duration;
-				int duration = stack.getData().getInteger("ticks");
-				drawCounter((float) Math.max(duration, 1) / durationMax);
-			}
-			else drawCounter(1F);
+			int durationMax = ((ItemShield) stack.getItem()).duration;
+			int duration = stack.getData().getInteger("ticks");
+			drawCounter((float) Math.max(duration, 1) / durationMax);
 		}
 	}
 

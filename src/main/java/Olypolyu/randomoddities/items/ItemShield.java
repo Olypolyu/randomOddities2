@@ -32,7 +32,7 @@ public class ItemShield extends Item {
 		dz /= magnitude;
 		attacker.push(-dx * this.knockBack, this.knockBack * 0.60F, -dz * this.knockBack);
 
-		world.playSoundAtEntity(player, ("randomoddities.trampoline_bounce"), 1.0F, 0.9F + world.rand.nextFloat());
+		world.playSoundAtEntity(player, attacker, ("randomoddities.trampoline_bounce"), 1.0F, 0.9F + world.rand.nextFloat());
 		final float width = 1.0f;
 		for (int i = 0; i < 20; ++i) {
 			dx = world.rand.nextGaussian() * 0.02;
@@ -57,14 +57,21 @@ public class ItemShield extends Item {
 	public void inventoryTick(ItemStack itemstack, World world, Entity entity, int i, boolean flag) {
 		if (itemstack.getData().getBoolean("active")) {
 			int ticks = itemstack.getData().getInteger("ticks");
+			ticks = Math.min(ticks, duration);
 
 			int angle = itemstack.getData().getIntegerOrDefault("animation_data", 0) + 15;
 			angle %= 360;
 
 			entity.xd *= 0.95F;
 			entity.zd *= 0.95;
-			entity.speed = 0;
+			entity.speed = 0.02F;
 			entity.setSneaking(true);
+
+			((EntityPlayer) entity).inventory.setCurrentItem(itemstack, true);
+			if (((EntityPlayer)entity).inventory.getCurrentItem() != itemstack) {
+				itemstack.getData().putBoolean("active", false);
+				return;
+			}
 
 			float mod = (float) (ticks * 0.125 / duration);
 			world.spawnParticle("flame", entity.x + (Math.cos(Math.toRadians(angle))), entity.y - (angle*entity.bbHeight/360), entity.z + (Math.sin(Math.toRadians(angle))), Math.cos(Math.toRadians(angle)) * mod, 0, Math.sin(Math.toRadians(angle)) * mod);
@@ -79,16 +86,17 @@ public class ItemShield extends Item {
 			} else {
 				itemstack.getData().putBoolean("active", false);
 			}
-		}
-		else {
+		} else {
 			itemstack.getData().putInt("animation_data", 0);
+
+			int ticks = itemstack.getData().getInteger("ticks");
+			itemstack.getData().putInt("ticks", ticks + 1);
 		}
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
-		itemstack.getData().putBoolean("active", true);
-		itemstack.getData().putInt("ticks", duration);
+		if (itemstack.getData().getInteger("ticks") >= duration * 1.25) itemstack.getData().putBoolean("active", true);
 		return itemstack;
 	}
 }

@@ -1,12 +1,11 @@
 package Olypolyu.randomoddities.mixin;
 
 import net.minecraft.core.block.Block;
-import net.minecraft.core.block.BlockTorch;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.item.tool.ItemToolPickaxe;
-import net.minecraft.core.sound.SoundType;
+import net.minecraft.core.sound.SoundCategory;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -72,7 +71,7 @@ public abstract class RandomOdditiesPickaxeMixin {
 
 				world.setBlockWithNotify(blockX, blockY, blockZ, Block.torchCoal.id);
 				Block.torchCoal.onBlockPlaced(world, blockX, blockY, blockZ, side, entityplayer, yPlaced);
-				world.playSoundEffect(SoundType.WORLD_SOUNDS, (blockX + 0.5F), (blockY + 0.5F), (blockZ + 0.5F), "step.wood", 1.0F, 1.0F);
+				world.playSoundEffect(entityplayer, SoundCategory.WORLD_SOUNDS, (blockX + 0.5F), (blockY + 0.5F), (blockZ + 0.5F), "step.wood", 1.0F, 1.0F);
 				callbackInfoReturnable.setReturnValue(true);
 			}
 		}

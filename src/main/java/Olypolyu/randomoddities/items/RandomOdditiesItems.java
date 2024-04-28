@@ -28,7 +28,7 @@ public class RandomOdditiesItems {
 
 	public static final Item coinStack = ItemHelper.createItem(MOD_ID, new ItemCoinStack(randomOdditiesIds++, 15, 5).setKey("coin_stack"), "coin_stack.png");
 	public static final Item itemPumpkinPie = ItemHelper.createItem(MOD_ID, new ItemPlaceable("pumpkin_pie", randomOdditiesIds++, RandomOdditiesBlocks.pumpkinPie).setIconCoord(13, 3));
-	public static final Item shield = ItemHelper.createItem(MOD_ID, new ItemShield(randomOdditiesIds++, 84, 0.60F, 0.90F, 1F).setKey("shield"), "shield.png");
+	public static final Item shield = ItemHelper.createItem(MOD_ID, new ItemShield(randomOdditiesIds++, 84, 0.55F, 0.75F, 1F).setKey("shield"), "shield.png");
 	public void initializeItems() {
 		RandomOdditiesCore.info("RandomOddities has loaded items");
 	}

@@ -60,7 +60,7 @@ public class BlockPaintedGlass extends BlockGlass {
 				);
 			}
 			player.swingItem();
-			world.playSoundAtEntity(player, "mob.slime", 0.3F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+			world.playSoundAtEntity(player, player, "mob.slime", 0.3F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
 			world.setBlockWithNotify(x, y, z, Block.glass.id);
 
 			item.consumeItem(player);

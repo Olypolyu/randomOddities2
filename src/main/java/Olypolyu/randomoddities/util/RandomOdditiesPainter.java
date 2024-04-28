@@ -61,7 +61,7 @@ public class RandomOdditiesPainter implements IRandomOdditiesPainter {
 			);
 		}
 
-		world.playSoundAtEntity(entityplayer, "mob.slime", 0.3F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+		world.playSoundAtEntity(entityplayer, entityplayer, "mob.slime", 0.3F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
 
 		return true;
 	}

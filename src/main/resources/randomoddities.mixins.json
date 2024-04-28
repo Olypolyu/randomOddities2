@@ -12,7 +12,8 @@
       "RandomOdditiesGUICore",
       "RandomOdditiesGUISP",
       "RandomOdditiesShieldMixin",
-      "RandomOdditiesShieldRendererMixin"
+      "RandomOdditiesShieldRendererMixin",
+      "RandomOdditiesCoinDropsMixin"
     ],
 
     "client": [

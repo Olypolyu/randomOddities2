@@ -5,7 +5,7 @@ import net.minecraft.core.block.Block;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
-import net.minecraft.core.sound.SoundType;
+import net.minecraft.core.sound.SoundCategory;
 import net.minecraft.core.world.World;
 
 import java.util.Random;
@@ -41,8 +41,7 @@ public class ItemWindLamp extends Item {
         entityplayer.airSupply = ((RandomOdditiesAirSupplyMixin) entityplayer).getMaxAir();
 		entityplayer.yd = 0.5F;
 
-		world.playSoundEffect(SoundType.WORLD_SOUNDS, entityplayer.x, entityplayer.y, entityplayer.z, "random.fizz", 1.5F, (1.0F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F) * 0.7F);
-
+		world.playSoundEffect(entityplayer, SoundCategory.ENTITY_SOUNDS, entityplayer.x, entityplayer.y, entityplayer.z, "random.fizz", 1.5F, (1.0F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F) * 0.7F);
         for (int i = 0; i < 8 + this.random.nextInt(7); i++){
 
             // shows bubbles if the player is underwater.

@@ -4,8 +4,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.fx.EntityDiggingFX;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.enums.EnumBlockSoundEffectType;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemStack;
+import net.minecraft.core.sound.BlockSounds;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 
@@ -60,20 +62,14 @@ public class ItemPaintScrapper extends Item {
 			Minecraft mc = Minecraft.getMinecraft(Minecraft.class);
 			for (int particle = 0; particle < 24; particle++) {
 				mc.effectRenderer.addEffect(
-					new EntityDiggingFX(
-						world,
+					new EntityDiggingFX(world,
 						i + Block.getBlock(block).maxX + Block.getBlock(block).minX - world.rand.nextDouble(),
 						j + Block.getBlock(block).maxY + Block.getBlock(block).minY - world.rand.nextDouble(),
 						k + Block.getBlock(block).maxZ + Block.getBlock(block).minZ - world.rand.nextDouble(),
-						0,
-						0,
-						0,
-						Block.getBlock(block),
-						0,
-						0
-					)
+						0, 0, 0, Block.getBlock(block), meta)
 				);
 			}
+			world.playBlockSoundEffect(entityplayer, (i + 0.5F), (j + 0.5F), (k + 0.5F), Block.getBlock(block), EnumBlockSoundEffectType.DIG);
             //world.playSoundEffect((i + 0.5F), (j + 0.5F), (k + 0.5F), Block.getBlock(block).stepSound.func_1145_d(), ( Block.getBlock(block).stepSound.getVolume() + 1.0F) / 2.0F, Block.getBlock(block).stepSound.getPitch() * 0.8F);
             return true;
         }

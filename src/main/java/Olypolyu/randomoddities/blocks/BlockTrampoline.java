@@ -62,7 +62,7 @@ public class BlockTrampoline extends Block {
 		entity.yd = compute(entity.yd, launchY);
 		entity.zd = compute(entity.zd, launchZ);
 		world.playSoundAtEntity(
-			entity,("randomoddities.trampoline_bounce"),
+			null, entity,("randomoddities.trampoline_bounce"),
 			1.0F + (0.16F * compute(entity.yd, launchY)),
 			9.0F + random.nextFloat()
 		);

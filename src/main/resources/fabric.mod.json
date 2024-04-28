@@ -29,10 +29,6 @@
 		"afterGameStart": [
 			"Olypolyu.randomoddities.RandomOdditiesCore"
 		],
-		"recipesReady": [
-			"Olypolyu.randomoddities.RandomOdditiesCore"
-		],
-
 		"beforeClientStart" : [
 			"Olypolyu.randomoddities.RandomOdditiesClient"
 		],

@@ -37,7 +37,7 @@ public class BlockCoin extends Block {
 
 			int coinAmount = world.rand.nextInt(this.amountMax - this.amountMin) + this.amountMin;
 			((IRandomOdditiesCoinAmount) entity).randomOddities$addCoinAmount(world.rand.nextInt(this.amountMax - this.amountMin) + this.amountMin);
-			world.playSoundAtEntity(entity, "randomoddities.coin_chime",0.65F,1.0F);
+			world.playSoundAtEntity(entity, entity,"randomoddities.coin_chime",0.65F,1.0F);
 
 			for ( int coin = 0; coin < coinAmount; coin++) {
 				int motionMod = world.rand.nextBoolean() ? 1 : -1;

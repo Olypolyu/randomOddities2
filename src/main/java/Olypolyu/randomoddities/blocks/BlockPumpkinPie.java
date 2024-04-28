@@ -40,7 +40,7 @@ public class BlockPumpkinPie extends BlockCake {
     }
 
     private void eatSlice(World world, int i, int j, int k, EntityPlayer entityplayer) {
-        if (entityplayer.health < 20) {
+        if (entityplayer.getHealth() < 20) {
             entityplayer.heal(5);
             int l = world.getBlockMetadata(i, j, k) + 1;
             if (l >= 4) {

@@ -24,7 +24,7 @@ public class ItemCoinStack extends Item {
 
 		int coinAmount = world.rand.nextInt(this.amountMax - this.amountMin) + this.amountMin;
 		((IRandomOdditiesCoinAmount) entityplayer).randomOddities$addCoinAmount(coinAmount);
-		world.playSoundAtEntity(entityplayer, "randomoddities.coin_chime",0.65F,1.0F);
+		world.playSoundAtEntity(entityplayer, entityplayer, "randomoddities.coin_chime",0.65F,1.0F);
 
 		for ( int coin = 0; coin < coinAmount; coin++) {
 			int motionMod = world.rand.nextBoolean() ? 1 : -1;

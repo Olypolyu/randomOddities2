@@ -12,11 +12,10 @@ import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 
-public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
+public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint {
     public static final String MOD_ID = "randomoddities";
     private static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -61,10 +60,5 @@ public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint, 
 
 	@Override
 	public void afterGameStart() {
-	}
-
-	@Override
-	public void onRecipesReady() {
- 		new RandomOdditiesRecipes().initializeRecipes();
 	}
 }
