@@ -13,7 +13,8 @@
       "RandomOdditiesGUISP",
       "RandomOdditiesShieldMixin",
       "RandomOdditiesShieldRendererMixin",
-      "RandomOdditiesCoinDropsMixin"
+      "RandomOdditiesCoinDropsMixin",
+      "RandomOdditiesOptionsSaveMixin"
     ],
 
     "client": [

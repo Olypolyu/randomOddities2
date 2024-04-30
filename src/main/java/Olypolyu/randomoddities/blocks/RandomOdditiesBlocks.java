@@ -90,6 +90,11 @@ public class RandomOdditiesBlocks {
 
 	// TODO: add rotation to coins, add animation to trampoline.
 
+	public static Block coconut = new BlockBuilder(MOD_ID)
+		.setBlockSound(new BlockSound("step.stone", "step.stone", 1.0f, 1.0f))
+		.setHardness(1.0F)
+		.setResistance(1.0F)
+		.build(new BlockCoconut("coconut", randomOdditiesIds++, Material.plant).withTags(BlockTags.MINEABLE_BY_PICKAXE));
 	public void initializeBlocks() {
 		RandomOdditiesCore.info("RandomOddities has loaded blocks");
 	}
