@@ -51,7 +51,8 @@ public abstract class RandomOdditiesCoinDropsMixin extends Entity {
 							walletEntity.z + (Math.sin(rad) * radius),
 							world.rand.nextDouble() / 4 * motionMod,
 							world.rand.nextDouble() / 4 * motionMod,
-							world.rand.nextDouble() / 4 * motionMod
+							world.rand.nextDouble() / 4 * motionMod,
+							0, 0
 						);
 					}
 				}

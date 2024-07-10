@@ -25,8 +25,11 @@ public class RandomOdditiesTrampolineMixin {
         randomoddities$prevY = y;
     }
 
-    @Redirect(method = "move(DDD)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/util/helper/MathHelper;floor_double(D)I", ordinal = 5))
-    private int extendBlockRange(double d){
-        return MathHelper.floor_double(((Entity)(Object)this).bb.minY + 0.001 + randomoddities$deltaY);
-    }
+    /*@Redirect(
+        method = "move",
+        at = @At(value = "INVOKE", target = "floor_double", ordinal = 5)
+    )
+    public int extendBlockRange(double d) {
+        return MathHelper.floor_double(d + randomoddities$deltaY);
+    }*/
 }

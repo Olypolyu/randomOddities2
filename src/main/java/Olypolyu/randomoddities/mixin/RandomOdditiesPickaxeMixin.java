@@ -19,7 +19,7 @@ public abstract class RandomOdditiesPickaxeMixin {
 	// This is cursed. As for the reason I have to do this, onItemUse() is not overridden and is inherited. I cannot use @Inject there.
 	// So, if I want to this I have to either to use @Override and break every other mod or... this.
 	@SuppressWarnings({"ConstantValue", "DataFlowIssue"})
-	@Inject(method = "onItemUse", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "onUseItemOnBlock", at = @At("HEAD"), cancellable = true)
 	public void injectOnItemUSe(ItemStack itemstack, EntityPlayer entityplayer, World world, int blockX, int blockY, int blockZ, Side side, double xPlaced, double yPlaced, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
 		if (((Item)(Object)this) instanceof ItemToolPickaxe) {
 			int torchAt;

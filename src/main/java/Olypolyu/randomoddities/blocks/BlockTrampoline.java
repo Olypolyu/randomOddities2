@@ -7,6 +7,7 @@ import net.minecraft.core.entity.EntityLiving;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.util.phys.AABB;
 import net.minecraft.core.world.World;
+import net.minecraft.core.world.WorldSource;
 
 import java.util.Random;
 
@@ -77,7 +78,7 @@ public class BlockTrampoline extends Block {
 				entity.x + (double) (random.nextFloat() * width * 2.0F) - (double) width,
 				entity.y - entity.bbHeight + (double) (random.nextFloat() * width),
 				entity.z + (double) (random.nextFloat() * width * 2.0F) - (double) width,
-				dx, dy, dz
+				dx, dy, dz, 0, 0
 			);
 		}
 	}
@@ -91,7 +92,7 @@ public class BlockTrampoline extends Block {
 	}
 
 	@Override
-	public AABB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
+	public AABB getCollisionBoundingBoxFromPool(WorldSource world, int x, int y, int z) {
 		return AABB.getBoundingBoxFromPool(minX, y, minZ, maxX, y, maxZ);
 	}
 

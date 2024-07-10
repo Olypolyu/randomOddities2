@@ -61,12 +61,6 @@ public class RandomOdditiesRecipes {
 		};
 		WORKBENCH.register("pillow", new RecipeEntryCraftingShaped(3, 2, pillowRecipe, new ItemStack(RandomOdditiesBlocks.pillow)));
 
-		RecipeSymbol[] pieRecipe = {
-			new RecipeSymbol(new ItemStack(Item.eggChicken)), new RecipeSymbol(new ItemStack(Block.pumpkin)), new RecipeSymbol(new ItemStack(Item.eggChicken)),
-			new RecipeSymbol(new ItemStack(Item.wheat)), new RecipeSymbol(new ItemStack(Item.bucketMilk)), new RecipeSymbol(new ItemStack(Item.wheat))
-		};
-		WORKBENCH.register("pumpkin_pie", new RecipeEntryCraftingShaped(3, 2, pieRecipe, new ItemStack(RandomOdditiesItems.itemPumpkinPie)));
-
 		RecipeSymbol[] bubbleGeneratorRecipe = {
 			new RecipeSymbol(new ItemStack(Item.dye, 1, 4)),new RecipeSymbol(new ItemStack(Item.featherChicken)), new RecipeSymbol(new ItemStack(Item.dye, 1, 4)),
 			new RecipeSymbol(new ItemStack(Item.ingotIron)), new RecipeSymbol(new ItemStack(Block.mesh)), new RecipeSymbol(new ItemStack(Item.ingotIron))

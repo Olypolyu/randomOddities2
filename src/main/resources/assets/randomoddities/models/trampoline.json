@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "randomoddities:block/trampoline/bottom",
-		"1": "randomoddities:block/trampoline/top",
-		"2": "randomoddities:block/trampoline/sides",
-		"3": "randomoddities:block/trampoline/bottom_half_top",
-    "particle": "randomoddities:block/trampoline/sides"
+		"0": "randomoddities:block/trampoline_bottom",
+		"1": "randomoddities:block/trampoline_top",
+		"2": "randomoddities:block/trampoline_sides",
+		"3": "randomoddities:block/trampoline_bottom_half_top",
+    "particle": "randomoddities:block/trampoline_sides"
 	},
 	"elements": [
 		{

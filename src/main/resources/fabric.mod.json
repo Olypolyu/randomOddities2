@@ -34,8 +34,10 @@
 		],
 		"afterClientStart" : [
 			"Olypolyu.randomoddities.RandomOdditiesClient"
-		]
-
+		],
+		"recipesReady": [
+			"Olypolyu.randomoddities.RandomOdditiesCore"
+        ]
 	},
 
   "mixins": [

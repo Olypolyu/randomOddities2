@@ -16,7 +16,7 @@ public class GuiButtonVendingMachineEntry extends GuiButton {
 	protected final int v = 0;
 
 	protected DataVendingMachineEntry entry = null;
-	protected static final String texture = "/assets/randomoddities/gui/vending_machine_GUI.png";
+	protected static final String texture = "/assets/randomoddities/textures/gui/vending_machine_GUI.png";
 
 	public GuiButtonVendingMachineEntry(int id, int xPosition, int yPosition) {
 		super(id, xPosition, yPosition, "");

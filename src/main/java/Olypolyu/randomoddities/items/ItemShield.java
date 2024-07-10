@@ -13,8 +13,8 @@ public class ItemShield extends Item {
 	public final float protectionMod;
 	public final float knockBack;
 
-	public ItemShield(int id, int durability, float damageMod, float protectionMod, float knockBack) {
-		super(id);
+	public ItemShield(String key, int id, int durability, float damageMod, float protectionMod, float knockBack) {
+		super(key, id);
 		this.maxStackSize = 1;
 		this.damageMod = damageMod;
 		this.protectionMod = protectionMod;
@@ -43,14 +43,9 @@ public class ItemShield extends Item {
 				attacker.x + (double) (world.rand.nextFloat() * width * 2.0F) - width,
 				attacker.y + (attacker.bbHeight / 2) + (double) (world.rand.nextFloat() * width),
 				attacker.z + (double) (world.rand.nextFloat() * width * 2.0F) - width,
-				dx, dy, dz
+				dx, dy, dz, 0, 0
 			);
 		}
-	}
-
-	@Override
-	public boolean isFull3D() {
-		return true;
 	}
 
 	@Override
@@ -74,12 +69,12 @@ public class ItemShield extends Item {
 			}
 
 			float mod = (float) (ticks * 0.125 / duration);
-			world.spawnParticle("flame", entity.x + (Math.cos(Math.toRadians(angle))), entity.y - (angle*entity.bbHeight/360), entity.z + (Math.sin(Math.toRadians(angle))), Math.cos(Math.toRadians(angle)) * mod, 0, Math.sin(Math.toRadians(angle)) * mod);
+			world.spawnParticle("flame", entity.x + (Math.cos(Math.toRadians(angle))), entity.y - (angle*entity.bbHeight/360), entity.z + (Math.sin(Math.toRadians(angle))), Math.cos(Math.toRadians(angle)) * mod, 0, Math.sin(Math.toRadians(angle)) * mod, 0, 0);
 			itemstack.getData().putInt("animation_data", angle);
 			angle = (angle + 180) % 360;
-			world.spawnParticle("flame", entity.x + (Math.cos(Math.toRadians(angle))), entity.y + (angle*entity.bbHeight/360) - entity.bbHeight, entity.z + (Math.sin(Math.toRadians(angle))), Math.cos(Math.toRadians(angle)) * mod, 0, Math.sin(Math.toRadians(angle)) * mod);
+			world.spawnParticle("flame", entity.x + (Math.cos(Math.toRadians(angle))), entity.y + (angle*entity.bbHeight/360) - entity.bbHeight, entity.z + (Math.sin(Math.toRadians(angle))), Math.cos(Math.toRadians(angle)) * mod, 0, Math.sin(Math.toRadians(angle)) * mod, 0, 0);
 
-			world.spawnParticle("smoke", entity.x + world.rand.nextGaussian(), entity.y + world.rand.nextGaussian(), entity.z + world.rand.nextGaussian(), 0.0, 0.0, 0.0);
+			world.spawnParticle("smoke", entity.x + world.rand.nextGaussian(), entity.y + world.rand.nextGaussian(), entity.z + world.rand.nextGaussian(), 0.0, 0.0, 0.0, 0, 0);
 
 			if (ticks > 0) {
 				itemstack.getData().putInt("ticks", ticks - 1);
@@ -95,7 +90,7 @@ public class ItemShield extends Item {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+	public ItemStack onUseItem(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		if (itemstack.getData().getInteger("ticks") >= duration * 1.25) itemstack.getData().putBoolean("active", true);
 		return itemstack;
 	}
