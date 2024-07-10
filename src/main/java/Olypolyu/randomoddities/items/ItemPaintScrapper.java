@@ -13,17 +13,15 @@ import net.minecraft.core.world.World;
 
 public class ItemPaintScrapper extends Item {
 
-    public ItemPaintScrapper(int i) {
-        super(i);
+    public ItemPaintScrapper(String key, int i) {
+        super(key, i);
         this.maxStackSize = 1;
-        this.bFull3D = true;
         this.setMaxDamage(24);
     }
 
 	// TODO: use a hashmap like the paintbrush does.
-
 	@Override
-	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, Side l, double xPlaced, double yPlaced) {
+	public boolean onUseItemOnBlock(ItemStack itemstack, EntityPlayer entityplayer, World world, int i, int j, int k, Side l, double xPlaced, double yPlaced) {
         int block = world.getBlockId(i, j, k);
         int meta = world.getBlockMetadata(i, j, k);
 
@@ -66,7 +64,7 @@ public class ItemPaintScrapper extends Item {
 						i + Block.getBlock(block).maxX + Block.getBlock(block).minX - world.rand.nextDouble(),
 						j + Block.getBlock(block).maxY + Block.getBlock(block).minY - world.rand.nextDouble(),
 						k + Block.getBlock(block).maxZ + Block.getBlock(block).minZ - world.rand.nextDouble(),
-						0, 0, 0, Block.getBlock(block), meta)
+						0.0, 0.0, 0.0, Block.getBlock(block), l.getId(), meta)
 				);
 			}
 			world.playBlockSoundEffect(entityplayer, (i + 0.5F), (j + 0.5F), (k + 0.5F), Block.getBlock(block), EnumBlockSoundEffectType.DIG);

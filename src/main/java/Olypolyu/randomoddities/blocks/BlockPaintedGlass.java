@@ -1,7 +1,5 @@
 package Olypolyu.randomoddities.blocks;
 
-
-import Olypolyu.randomoddities.RandomOdditiesAssets;
 import Olypolyu.randomoddities.particle.EntityPaintFX;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.block.Block;
@@ -14,30 +12,19 @@ import net.minecraft.core.util.helper.Color;
 import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 
-import static Olypolyu.randomoddities.RandomOdditiesAssets.particleSizes;
 import static Olypolyu.randomoddities.items.ItemPaintBrush.colourValues;
 
 public class BlockPaintedGlass extends BlockGlass {
-
-    public BlockPaintedGlass(String key, int i, Material material, boolean flag) {
-        super(key, i, material, flag);
+    public BlockPaintedGlass(String key, int i, Material material) {
+        super(key, i, material);
     }
-
-	@Override
-	public int getBlockTextureFromSideAndMetadata(Side side, int data) {
-		try {
-			return RandomOdditiesAssets.glassPaintedIndex[data];
-		} catch (Exception exception) {
-			return 0;
-		}
-	}
 
 	public int getRenderBlockPass() {
         return 1;
     }
 
 	@Override
-	public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
+	public boolean onBlockRightClicked(World world, int x, int y, int z, EntityPlayer player, Side side, double xPlaced, double yPlaced) {
 		ItemStack item = player.inventory.mainInventory[player.inventory.currentItem];
 
 		if (item.getItem() == Item.cloth) {
@@ -46,7 +33,7 @@ public class BlockPaintedGlass extends BlockGlass {
 			particleColour.setARGB(colourValues[world.getBlockMetadata(x, y, z)]);
 			for (int particle = 0; particle < 24; particle++) {
 				mc.effectRenderer.addEffect(
-					new EntityPaintFX(world.rand.nextInt(particleSizes.length),
+					new EntityPaintFX(world.rand.nextInt(4),
 						particleColour.getRed() / 255F,
 						particleColour.getBlue() / 255F,
 						particleColour.getGreen() / 255F,
@@ -54,9 +41,8 @@ public class BlockPaintedGlass extends BlockGlass {
 						x + world.rand.nextDouble(),
 						y + world.rand.nextDouble(),
 						z + world.rand.nextDouble(),
-						0,
-						0,
-						0)
+						0, 0, 0
+					)
 				);
 			}
 			player.swingItem();
@@ -69,6 +55,6 @@ public class BlockPaintedGlass extends BlockGlass {
 			}
 		}
 
-		return super.blockActivated(world, x, y, z, player);
+		return super.onBlockRightClicked(world, x, y, z, player, side, xPlaced, yPlaced);
 	}
 }

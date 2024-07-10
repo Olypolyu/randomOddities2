@@ -23,7 +23,7 @@ public class GUIVendingMachine extends GuiContainer {
 
 	private final TileEntityVendingMachine tile;
 
-	protected static final String texture = "/assets/randomoddities/gui/vending_machine_GUI.png";
+	protected static final String texture = "/assets/randomoddities/textures/gui/vending_machine_GUI.png";
 	public int xSize = 176;
 	public int ySize = 222;
 

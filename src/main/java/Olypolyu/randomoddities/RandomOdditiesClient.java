@@ -27,9 +27,9 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 
 public class RandomOdditiesClient implements ClientStartEntrypoint {
-	public static HudComponent COIN_COUNTER = HudComponents.register(new ComponentCoinCounter("randomoddities.coin_counter", new SnapLayout(HudComponents.HOTBAR, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
-	public static HudComponent SHIELD_GLYPH = HudComponents.register(new ComponentShield("randomoddities.shield_glyph", new SnapLayout(COIN_COUNTER, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
-	public static HudComponent HEALTH_MEETER = HudComponents.register(new ComponentHealthMeeter("randomoddities.health_meeter", new AbsoluteLayout(0.5f, 0.0f, ComponentAnchor.TOP_CENTER)));
+	public static HudComponent COIN_COUNTER;
+	public static HudComponent SHIELD_GLYPH;
+	public static HudComponent HEALTH_MEETER;
 
 	private static File optionsFile;
 	private static final HashMap<String, Option> RandomOdditiesOptions = new HashMap<>();
@@ -43,6 +43,10 @@ public class RandomOdditiesClient implements ClientStartEntrypoint {
 
 	@Override
 	public void afterClientStart() {
+    	COIN_COUNTER = HudComponents.register(new ComponentCoinCounter("randomoddities.coin_counter", new SnapLayout(HudComponents.HOTBAR, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
+    	SHIELD_GLYPH = HudComponents.register(new ComponentShield("randomoddities.shield_glyph", new SnapLayout(COIN_COUNTER, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
+    	HEALTH_MEETER = HudComponents.register(new ComponentHealthMeeter("randomoddities.health_meeter", new AbsoluteLayout(0.5f, 0.0f, ComponentAnchor.TOP_CENTER)));
+
 		GameSettings gameSettings = Minecraft.getMinecraft(Minecraft.class).gameSettings;
 		OptionsPage optionsPage = new OptionsPage("options.randomoddities.title", RandomOdditiesBlocks.trampoline.getDefaultStack());
 

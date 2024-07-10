@@ -10,27 +10,17 @@ import net.minecraft.core.world.World;
 
 import java.util.Random;
 
-import static Olypolyu.randomoddities.RandomOdditiesAssets.emptyWindLampTex;
-import static Olypolyu.randomoddities.RandomOdditiesAssets.windLampTex;
-
 public class ItemWindLamp extends Item {
     private final Random random = new Random();
 
-    public ItemWindLamp(int i, int Charge) {
-        super(i);
+    public ItemWindLamp(String key, int i, int Charge) {
+        super(key, i);
         this.maxStackSize = 1;
         this.setMaxDamage(Charge);
 	}
 
-	public int getIconFromDamage(int i) {
-        if (i == this.getMaxDamage()) {
-			return Block.texCoordToIndex(emptyWindLampTex[0], emptyWindLampTex[1]) ;
-		}
-
-		return Block.texCoordToIndex(windLampTex[0], windLampTex[1]);
-	}
-
-    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+    @Override
+    public ItemStack onUseItem(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 
         if (entityplayer.yd > 0.5F) return itemstack;
 
@@ -52,7 +42,9 @@ public class ItemWindLamp extends Item {
 					entityplayer.z,
 					(this.random.nextFloat() - 0.5F),
 					(this.random.nextFloat() - 0.5F),
-					(this.random.nextFloat() - 0.5F));
+					(this.random.nextFloat() - 0.5F),
+					0, 0
+				);
 
 			} else {
 				// shows smoke if the player is not underwater.
@@ -62,7 +54,9 @@ public class ItemWindLamp extends Item {
 					entityplayer.z,
 					(this.random.nextFloat() - 0.5F),
 					(this.random.nextFloat() - 0.8F),
-					(this.random.nextFloat() - 0.5F));
+					(this.random.nextFloat() - 0.5F),
+					0, 0
+				);
 
 			}
 		}

@@ -13,7 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ComponentCoinCounter extends MovableHudComponent {
 
-	private static final String texture = "/assets/randomoddities/gui/glyphs.png";
+	private static final String texture = "/assets/randomoddities/textures/gui/glyphs.png";
 	private static final int iconSize = 16;
 	private static final int spacing = 1;
 

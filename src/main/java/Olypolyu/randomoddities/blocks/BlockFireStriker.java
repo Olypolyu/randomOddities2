@@ -1,6 +1,5 @@
 package Olypolyu.randomoddities.blocks;
 
-import Olypolyu.randomoddities.RandomOdditiesAssets;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockRotatable;
 import net.minecraft.core.block.material.Material;
@@ -15,7 +14,6 @@ import net.minecraft.core.world.World;
 import java.util.List;
 
 public class BlockFireStriker extends BlockRotatable {
-
     public BlockFireStriker(String key, int i, Material material) {
         super(key, i, material);
     }
@@ -24,36 +22,6 @@ public class BlockFireStriker extends BlockRotatable {
         boolean power = world.isBlockGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k);
         if (power && !lastState) this.onPowered(world, i, j, k);
         lastState = power;
-    }
-
-	@Override
-	public int getBlockTextureFromSideAndMetadata(Side side, int data) {
-		// block's facing :
-		switch (data) {
-			//north
-			default:
-				if (side == Side.NORTH)
-					 return RandomOdditiesAssets.fireStriker;
-				else return texCoordToIndex(14, 3);
-
-			//south
-			case 3:
-				if (side == Side.SOUTH)
-					return RandomOdditiesAssets.fireStriker;
-				else return texCoordToIndex(14, 3);
-
-			//west
-			case 4:
-				if (side == Side.WEST)
-					return RandomOdditiesAssets.fireStriker;
-				else return texCoordToIndex(14, 3);
-
-			//east
-			case 5:
-				if (side == Side.EAST)
-					return RandomOdditiesAssets.fireStriker;
-				else return texCoordToIndex(14, 3);
-		}
     }
 
     public void onPowered(World world, int i, int j, int k) {
@@ -112,7 +80,7 @@ public class BlockFireStriker extends BlockRotatable {
         // summon particles
         for ( int x = 0; x < 5; x++) {
 			int motionMod = world.rand.nextBoolean() ? 1 : -1;
-            world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, world.rand.nextDouble() / 4 * motionMod, world.rand.nextDouble() / 4 * motionMod, world.rand.nextDouble() / 4 * motionMod);
+            world.spawnParticle("smoke", i + 0.5, j + 0.5, k + 0.5, world.rand.nextDouble() / 4 * motionMod, world.rand.nextDouble() / 4 * motionMod, world.rand.nextDouble() / 4 * motionMod, 0, 0);
         }
     }
 }

@@ -11,14 +11,14 @@ public class ItemCoinStack extends Item {
 	private final int amountMax;
 	private final int amountMin;
 
-	public ItemCoinStack(int id, int amountMax, int amountMin) {
-		super(id);
+	public ItemCoinStack(String key, int id, int amountMax, int amountMin) {
+		super(key, id);
 		this.amountMax = amountMax;
 		this.amountMin = amountMin;
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+	public ItemStack onUseItem(ItemStack itemstack, World world, EntityPlayer entityplayer) {
 		itemstack.consumeItem(entityplayer);
 		if (itemstack.stackSize < 1) itemstack = null;
 
@@ -37,10 +37,11 @@ public class ItemCoinStack extends Item {
 				entityplayer.z + (Math.sin(rad) * radius),
 				world.rand.nextDouble() / 4 * motionMod,
 				world.rand.nextDouble() / 4 * motionMod,
-				world.rand.nextDouble() / 4 * motionMod
+				world.rand.nextDouble() / 4 * motionMod,
+				0, 0
 			);
 		}
 
-		return super.onItemRightClick(itemstack, world, entityplayer);
+		return super.onUseItem(itemstack, world, entityplayer);
 	}
 }

@@ -17,11 +17,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class ItemPaintBrush extends Item {
-	public ItemPaintBrush(int id, int color) {
-		super(id);
+	public ItemPaintBrush(String key, int id, int color) {
+		super(key, id);
 		this.setMaxDamage(64);
 		this.maxStackSize = 1;
-		this.bFull3D = true;
 		this.colour = color;
 	}
 
@@ -48,7 +47,6 @@ public class ItemPaintBrush extends Item {
 
 		// already painted non-complex
 		Arrays.stream(new int[] {
-			RandomOdditiesBlocks.paintedGlass.id,
 			Block.fencePlanksOakPainted.id,
 			Block.planksOakPainted.id,
 			Block.lampActive.id,
@@ -70,7 +68,6 @@ public class ItemPaintBrush extends Item {
 		painterMap.put(Block.fencegatePlanksOak.id, new RandomOdditiesPainter(true,true, Block.fencegatePlanksOakPainted.id));
 		painterMap.put(Block.stairsPlanksOak.id, new RandomOdditiesPainter(true,true, Block.stairsPlanksOakPainted.id));
 		painterMap.put(Block.slabPlanksOak.id, new RandomOdditiesPainter(true,true, Block.slabPlanksOakPainted.id));
-		painterMap.put(Block.glass.id, new RandomOdditiesPainter(false, true, RandomOdditiesBlocks.paintedGlass.id));
 	}
 
     public boolean useItemOnEntity(ItemStack itemstack, EntityLiving entityliving, EntityPlayer entityplayer) {
@@ -89,7 +86,7 @@ public class ItemPaintBrush extends Item {
     }
 
 	@Override
-	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int blockX, int blockY, int blockZ, Side side, double xPlaced, double yPlaced) {
+	public boolean onUseItemOnBlock(ItemStack itemstack, EntityPlayer entityplayer, World world, int blockX, int blockY, int blockZ, Side side, double xPlaced, double yPlaced) {
         int block = world.getBlockId(blockX, blockY, blockZ);
 		IRandomOdditiesPainter painter = painterMap.get(block);
 

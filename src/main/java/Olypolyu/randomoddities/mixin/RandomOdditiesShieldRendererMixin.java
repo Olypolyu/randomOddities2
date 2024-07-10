@@ -9,6 +9,8 @@ import net.minecraft.client.render.model.ModelBase;
 import net.minecraft.client.render.model.ModelBiped;
 import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.item.ItemStack;
+import net.minecraft.client.render.item.model.ItemModelDispatcher;
+import net.minecraft.client.render.tessellator.Tessellator;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -43,7 +45,7 @@ public abstract class RandomOdditiesShieldRendererMixin extends LivingRenderer<E
 				GL11.glRotatef(-30F, 0.0F, 1.0F, 0.0F);
 				GL11.glTranslatef(0.25F, -0.90075F, 0.375F);
 
-				renderDispatcher.itemRenderer.renderItem(entity, itemstack);
+				ItemModelDispatcher.getInstance().getDispatch(itemstack).renderItem(Tessellator.instance, this.renderDispatcher.itemRenderer, entity, itemstack);
 				GL11.glPopMatrix();
 
 				int angle = itemstack.getData().getInteger("animation_data");
@@ -51,7 +53,7 @@ public abstract class RandomOdditiesShieldRendererMixin extends LivingRenderer<E
 				float y =  angle < 180 ? angle * 0.20F / 360 : (360 - angle) * 0.20F / 360;
 
 				GL11.glColor4f(0.8156862745F, 0.5019607843F, 0.0980392157F, 0.75F);
-				renderDispatcher.renderEngine.bindTexture(renderDispatcher.renderEngine.getTexture("/assets/randomoddities/block/circle.png"));
+				renderDispatcher.renderEngine.bindTexture(renderDispatcher.renderEngine.getTexture("/assets/randomoddities/textures/block/circle.png"));
 				model.addBox(-1.5F, 1.25F + y, -1.5F, 3, 0, 3, 0, true);
 				model.rotateAngleY = (angle+1 /16) * 16;
 				model.render(1);
@@ -68,7 +70,7 @@ public abstract class RandomOdditiesShieldRendererMixin extends LivingRenderer<E
 				GL11.glRotatef(30, 0.0F, 0.5F, 0.0F);
 				GL11.glScalef(scale, scale, scale);
 
-				renderDispatcher.itemRenderer.renderItem(entity, itemstack);
+				ItemModelDispatcher.getInstance().getDispatch(itemstack).renderItem(Tessellator.instance, this.renderDispatcher.itemRenderer, entity, itemstack);
 				GL11.glPopMatrix();
 				ci.cancel();
 			}

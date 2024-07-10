@@ -2,7 +2,6 @@ package Olypolyu.randomoddities.util;
 
 import Olypolyu.randomoddities.interfaces.IRandomOdditiesPainter;
 import Olypolyu.randomoddities.particle.EntityPaintFX;
-import static Olypolyu.randomoddities.RandomOdditiesAssets.particleSizes;
 import static Olypolyu.randomoddities.items.ItemPaintBrush.colourValues;
 
 import net.minecraft.client.Minecraft;
@@ -47,7 +46,7 @@ public class RandomOdditiesPainter implements IRandomOdditiesPainter {
 
 		for (int particle = 0; particle < 24; particle++) {
 			mc.effectRenderer.addEffect(
-				new EntityPaintFX(world.rand.nextInt(particleSizes.length),
+				new EntityPaintFX(world.rand.nextInt(4),
 					particleColour.getRed() / 255F,
 					particleColour.getBlue() / 255F,
 					particleColour.getGreen() / 255F,
@@ -55,9 +54,8 @@ public class RandomOdditiesPainter implements IRandomOdditiesPainter {
 					x + block.maxX + block.minX - world.rand.nextDouble(),
 					y + block.maxY + block.minY - world.rand.nextDouble(),
 					z + block.maxZ + block.minZ - world.rand.nextDouble(),
-					0,
-					0,
-					0)
+					0, 0, 0
+				)
 			);
 		}
 

@@ -4,6 +4,8 @@ import Olypolyu.randomoddities.RandomOdditiesCore;
 import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemPlaceable;
+import net.minecraft.client.render.item.model.ItemModelStandard;
+import turniplabs.halplibe.helper.ItemBuilder;
 import turniplabs.halplibe.helper.ItemHelper;
 
 import static Olypolyu.randomoddities.RandomOdditiesCore.MOD_ID;
@@ -12,24 +14,44 @@ import static Olypolyu.randomoddities.items.ItemPaintBrush.colours;
 public class RandomOdditiesItems {
 	private static int randomOdditiesIds = 17000;
 
-	public static final Item[] paintBrushes = new Item[colours.length];
-
-	static {
-		for (int colour = 0; colour < colours.length; colour ++) {
-			paintBrushes[colour] = ItemHelper.createItem(MOD_ID, new ItemPaintBrush(randomOdditiesIds++, colour).setKey(String.format("paint_brush.%s", colours[colour])),
-				String.format("paintBrush/%s.png", colours[colour]));
-		}
-	}
-
 	private static final int windLampCharges = 3;
-	public static final Item windLamp = ItemHelper.createItem(MOD_ID, new ItemWindLamp(randomOdditiesIds++, windLampCharges).setKey("wind_lamp"));
+	public static Item[] paintBrushes;
+	public static Item windLamp;
+	public static Item paintScrapper;
+	public static Item coinStack;
+	public static Item shield;
 
-	public static final Item paintScrapper = ItemHelper.createItem(MOD_ID, new ItemPaintScrapper(randomOdditiesIds++).setKey("paint_brush.scrapper"), "paintBrush/scrapper.png");
-
-	public static final Item coinStack = ItemHelper.createItem(MOD_ID, new ItemCoinStack(randomOdditiesIds++, 15, 5).setKey("coin_stack"), "coin_stack.png");
-	public static final Item itemPumpkinPie = ItemHelper.createItem(MOD_ID, new ItemPlaceable("pumpkin_pie", randomOdditiesIds++, RandomOdditiesBlocks.pumpkinPie).setIconCoord(13, 3));
-	public static final Item shield = ItemHelper.createItem(MOD_ID, new ItemShield(randomOdditiesIds++, 84, 0.55F, 0.75F, 1F).setKey("shield"), "shield.png");
 	public void initializeItems() {
+	    paintBrushes = new Item[colours.length];
+		ItemBuilder paintBrushBuilder = new ItemBuilder(MOD_ID)
+            .setItemModel(item -> new ItemModelStandard(item, MOD_ID).setFull3D());
+        for (int colour = 0; colour < colours.length; colour++) {
+            paintBrushes[colour] = paintBrushBuilder
+                .setIcon("randomoddities:item/paintBrush_" + colours[colour])
+                .build(new ItemPaintBrush(String.format("paint_brush_%s", colours[colour]), randomOdditiesIds++, colour));
+        }
+
+    	windLamp = new ItemBuilder(MOD_ID)
+    	    .setItemModel(item -> new ItemModelWindLamp(item, MOD_ID))
+    	    .setIcon("randomoddities:item/windBottle")
+    	    .build(new ItemWindLamp("wind_lamp", randomOdditiesIds++, windLampCharges));
+
+    	paintScrapper = new ItemBuilder(MOD_ID)
+    	    .setItemModel(item -> new ItemModelStandard(item, MOD_ID).setFull3D())
+    	    .setIcon("randomoddities:item/paintBrush_scrapper")
+    	    .build(new ItemPaintScrapper("paint_scrapper", randomOdditiesIds++));
+
+    	coinStack = new ItemBuilder(MOD_ID)
+    	    .setItemModel(item -> new ItemModelStandard(item, MOD_ID).setFull3D())
+    	    .setIcon("randomoddities:item/coin_stack")
+    	    .build(new ItemCoinStack("coin_stack", randomOdditiesIds++, 15, 5));
+
+    	shield = new ItemBuilder(MOD_ID)
+    	    .setItemModel(item -> new ItemModelStandard(item, MOD_ID).setFull3D())
+    	    .setIcon("randomoddities:item/shield")
+    	    .build(new ItemShield("shield", randomOdditiesIds++, 84, 0.55F, 0.75F, 1F));
+
+
 		RandomOdditiesCore.info("RandomOddities has loaded items");
 	}
 }

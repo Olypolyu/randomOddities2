@@ -11,6 +11,7 @@ import net.minecraft.client.gui.hud.MovableHudComponent;
 import net.minecraft.client.option.BooleanOption;
 import net.minecraft.client.render.EntityRenderDispatcher;
 import net.minecraft.client.render.Lighting;
+import net.minecraft.client.render.tessellator.Tessellator;
 import net.minecraft.core.entity.EntityDispatcher;
 import net.minecraft.core.entity.EntityLiving;
 import net.minecraft.core.entity.player.EntityPlayer;
@@ -19,7 +20,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ComponentHealthMeeter extends MovableHudComponent {
 
-	private static final String texture = "/assets/randomoddities/gui/health_meeter.png";
+	private static final String texture = "/assets/randomoddities/textures/gui/health_meeter.png";
 	private Minecraft mc = Minecraft.getMinecraft(Minecraft.class);
 	private int xScreenSize;
 	private int yScreenSize;
@@ -158,7 +159,7 @@ public class ComponentHealthMeeter extends MovableHudComponent {
 		entity.entityBrightness = 1.0f;
 		GL11.glTranslatef(0.0f, entity.heightOffset, 0.0f);
 		EntityRenderDispatcher.instance.viewLerpYaw = 180.0f;
-		EntityRenderDispatcher.instance.renderEntityWithPosYaw(entity, 0.0, 0.0, 0.0, 0.0f, 1.0f);
+		EntityRenderDispatcher.instance.renderEntityWithPosYaw(Tessellator.instance, entity, 0.0, 0.0, 0.0, 0.0f, 1.0f);
 		entity.entityBrightness = 0.0f;
 
 		entity.renderYawOffset = oYawOff;

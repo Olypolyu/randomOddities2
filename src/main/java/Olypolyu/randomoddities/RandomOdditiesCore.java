@@ -5,17 +5,23 @@ import Olypolyu.randomoddities.items.RandomOdditiesItems;
 
 import Olypolyu.randomoddities.tile.TileEntityBubbleColumn;
 import Olypolyu.randomoddities.tile.TileEntityVendingMachine;
+import net.minecraft.core.WeightedRandomLootObject;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemStack;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.RecipeEntrypoint;
+import turniplabs.halplibe.helper.RecipeBuilder;
+import Olypolyu.randomoddities.blocks.BlockFishTrap;
 
 import java.util.HashMap;
 
 
-public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint {
+public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
     public static final String MOD_ID = "randomoddities";
     private static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -53,12 +59,24 @@ public class RandomOdditiesCore implements ModInitializer, GameStartEntrypoint {
 		new RandomOdditiesAssets().initializeAssets();
 		new RandomOdditiesItems().initializeItems();
 		new RandomOdditiesBlocks().initializeBlocks();
-
-		EntityHelper.Core.createTileEntity(TileEntityBubbleColumn.class, "randomoddities$bubble_column");
-		EntityHelper.Core.createTileEntity(TileEntityVendingMachine.class, "randomoddities$vending_machine");
 	}
 
 	@Override
 	public void afterGameStart() {
+		BlockFishTrap.fishingLoot.add(new WeightedRandomLootObject(new ItemStack(Block.tnt), 1, 3));
+		BlockFishTrap.fishingLoot.add(new WeightedRandomLootObject(new ItemStack(Block.planksOakPainted, 1, 15), 1, 16));
+
+		EntityHelper.createTileEntity(TileEntityBubbleColumn.class, "randomoddities$bubble_column");
+		EntityHelper.createTileEntity(TileEntityVendingMachine.class, "randomoddities$vending_machine");
 	}
+
+	@Override
+	public void onRecipesReady() {
+	    new RandomOdditiesRecipes().initializeRecipes();
+    }
+
+    @Override
+    public void initNamespaces() {
+        RecipeBuilder.initNameSpace(MOD_ID);
+    }
 }

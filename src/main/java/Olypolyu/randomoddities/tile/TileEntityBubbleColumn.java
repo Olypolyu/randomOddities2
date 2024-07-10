@@ -71,7 +71,8 @@ public class TileEntityBubbleColumn extends TileEntity {
                             this.z + this.random.nextFloat(),
                             0,
                             this.columnLength,
-                            0);
+                            0, 0, 0
+                        );
             }
         }
 }

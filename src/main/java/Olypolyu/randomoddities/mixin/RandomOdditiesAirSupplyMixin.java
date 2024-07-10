@@ -4,10 +4,8 @@ import net.minecraft.core.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin(Entity.class)
+@Mixin(value = Entity.class, remap = false)
 public interface RandomOdditiesAirSupplyMixin {
-
     @Accessor("airMaxSupply")
-        int getMaxAir();
-
+    int getMaxAir();
 }

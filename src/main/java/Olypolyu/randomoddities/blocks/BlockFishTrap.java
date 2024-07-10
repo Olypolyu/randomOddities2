@@ -1,6 +1,5 @@
 package Olypolyu.randomoddities.blocks;
 
-import Olypolyu.randomoddities.RandomOdditiesAssets;
 import Olypolyu.randomoddities.items.ItemPaintBrush;
 import Olypolyu.randomoddities.items.RandomOdditiesItems;
 import net.minecraft.core.WeightedRandomLootObject;
@@ -20,19 +19,16 @@ public class BlockFishTrap extends Block {
 
     protected int radius = 1;
 
-	public static final ArrayList<WeightedRandomLootObject> FishingLoot = new ArrayList<>();
-	static {
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.foodFishRaw), 4, 2));
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.armorBootsLeather), 1));
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(Block.tnt), 1, 3));
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(RandomOdditiesItems.paintBrushes[Arrays.asList(ItemPaintBrush.colours).indexOf("brown")]), 1));
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.string), 3, 10));
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.dye, 1, 3), 1, 2));
-		FishingLoot.add(new WeightedRandomLootObject(new ItemStack(Block.planksOakPainted, 1, 15), 1, 16));
-	}
+	public static ArrayList<WeightedRandomLootObject> fishingLoot = new ArrayList<>();
 
     public BlockFishTrap(String key, int i, Material material) {
         super(key, i, material);
+
+		fishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.foodFishRaw), 4, 2));
+		fishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.armorBootsLeather), 1));
+		fishingLoot.add(new WeightedRandomLootObject(new ItemStack(RandomOdditiesItems.paintBrushes[Arrays.asList(ItemPaintBrush.colours).indexOf("brown")]), 1));
+		fishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.string), 3, 10));
+		fishingLoot.add(new WeightedRandomLootObject(new ItemStack(Item.dye, 1, 3), 1, 2));
         this.setTicking(true);
     }
 
@@ -77,32 +73,24 @@ public class BlockFishTrap extends Block {
         checkForWater(world, i, j, k);
     }
 
-	@Override
-	public int getBlockTextureFromSideAndMetadata(Side side, int data) {
-        if (data == 1) return RandomOdditiesAssets.fishTrapEngagedTex;
-        if (data == 2) return RandomOdditiesAssets.fishTrapFullTex;
-        return RandomOdditiesAssets.fishTrapTex;
-    }
-
-    public boolean blockActivated(World world, int i, int j, int k, EntityPlayer entityplayer) {
+    @Override
+    public boolean onBlockRightClicked(World world, int i, int j, int k, EntityPlayer entityplayer, Side side, double xp, double yp) {
         ItemStack currentItem = entityplayer.getCurrentEquippedItem();
-
-        if ( currentItem != null && world.getBlockMetadata(i, j, k) == 0) {
+        if (currentItem != null && world.getBlockMetadata(i, j, k) == 0) {
             if (currentItem.getItem() == Item.string) {
                 entityplayer.inventory.getCurrentItem().consumeItem(entityplayer);
                 world.setBlockMetadataWithNotify(i, j, k, 1);
-                this.getBlockTextureFromSideAndMetadata(Side.NORTH,0);
-                return true;
-                }
-            }
-
-        if ( world.getBlockMetadata(i, j, k) == 2) {
-                world.setBlockMetadataWithNotify(i, j, k, 0);
-				ItemStack loot = FishingLoot.get(world.rand.nextInt(FishingLoot.size())).getItemStack();
-                world.dropItem(i, j + 1, k, loot);
+                //this.getBlockTextureFromSideAndMetadata(Side.NORTH,0);
                 return true;
             }
+        }
 
+        if (world.getBlockMetadata(i, j, k) == 2) {
+            world.setBlockMetadataWithNotify(i, j, k, 0);
+			ItemStack loot = fishingLoot.get(world.rand.nextInt(fishingLoot.size())).getItemStack();
+            world.dropItem(i, j + 1, k, loot);
+            return true;
+        }
         return false;
     }
 
