@@ -88,6 +88,8 @@ item.randomoddities.paint_brush_red.desc=what a brush off...
 item.randomoddities.paint_brush_black.name=Black Paint Brush
 item.randomoddities.paint_brush_black.desc=what a brush off...
 
-item.randomoddities.paint_brush_scrapper.name=Paint Scrapper
-item.randomoddities.paint_brush_scrapper.desc=(Only applicable to wood) Paint begone!
+item.randomoddities.paint_scraper.name=Paint Scraper
+item.randomoddities.paint_scraper.desc=(Only applicable to wood) Paint begone!
 
+options.randomoddities.health_meter=Health Meter
+options.randomoddities.title=Random Oddities 2

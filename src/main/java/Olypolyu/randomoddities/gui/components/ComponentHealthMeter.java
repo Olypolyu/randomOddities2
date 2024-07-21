@@ -18,9 +18,9 @@ import net.minecraft.core.entity.player.EntityPlayer;
 import net.minecraft.core.lang.I18n;
 import org.lwjgl.opengl.GL11;
 
-public class ComponentHealthMeeter extends MovableHudComponent {
+public class ComponentHealthMeter extends MovableHudComponent {
 
-	private static final String texture = "/assets/randomoddities/textures/gui/health_meeter.png";
+	private static final String texture = "/assets/randomoddities/textures/gui/health_meter.png";
 	private Minecraft mc = Minecraft.getMinecraft(Minecraft.class);
 	private int xScreenSize;
 	private int yScreenSize;
@@ -29,15 +29,16 @@ public class ComponentHealthMeeter extends MovableHudComponent {
 	private long timestamp = 0;
 	private final int persistFor = 2;
 
-	public ComponentHealthMeeter(String key, Layout layout) {
+	public ComponentHealthMeter(String key, Layout layout) {
 		super(key, 100, 48, layout);
 	}
 
 	@Override
 	public boolean isVisible(Minecraft minecraft) {
-		BooleanOption healthMeeter = (BooleanOption) RandomOdditiesClient.getOption("health_meeter");
-		if ( healthMeeter != null) {
-			if (!healthMeeter.value) return false;
+	    if (!mc.gameSettings.immersiveMode.drawHotbar()) return false;
+		BooleanOption healthMeter = (BooleanOption) RandomOdditiesClient.getOption("health_meter");
+		if ( healthMeter != null) {
+			if (!healthMeter.value) return false;
 		}
 
 		if (this.entity != null && (System.currentTimeMillis()/1000L) - timestamp < persistFor) return true;
@@ -73,7 +74,7 @@ public class ComponentHealthMeeter extends MovableHudComponent {
 			this.timestamp = System.currentTimeMillis()/1000L;
 		}
 
-		drawMeeter(entity);
+		drawMeter(entity);
 	}
 
 	@Override
@@ -83,10 +84,10 @@ public class ComponentHealthMeeter extends MovableHudComponent {
 		this.xScreenSize = xScreenSize;
 		this.yScreenSize = yScreenSize;
 		this.entity = minecraft.thePlayer;
-		drawMeeter(entity);
+		drawMeter(entity);
 	}
 
-	public void drawMeeter(EntityLiving entity){
+	public void drawMeter(EntityLiving entity){
 		if (entity == null) return;
 
 		int barX = getLayout().getComponentX(mc, this, xScreenSize);

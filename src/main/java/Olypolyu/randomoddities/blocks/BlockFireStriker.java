@@ -20,58 +20,69 @@ public class BlockFireStriker extends BlockRotatable {
     private boolean lastState = false;
     public void onNeighborBlockChange(World world, int i, int j, int k, int l) {
         boolean power = world.isBlockGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k);
-        if (power && !lastState) this.onPowered(world, i, j, k);
-        lastState = power;
+        if (lastState != power) {
+            lastState = power;
+            this.onPowered(world, i, j, k, power);
+        }
     }
 
-    public void onPowered(World world, int i, int j, int k) {
+    public void onPowered(World world, int i, int j, int k, boolean powered) {
         int side = world.getBlockMetadata(i, j, k);
 
-        // is getting powered
-        if (world.isBlockIndirectlyGettingPowered(i, j, k) || world.isBlockIndirectlyGettingPowered(i, j, k)) {
+        switch (side) {
+            // north
+			default:
+                k--;
+                break;
 
-            switch (side) {
-                // north
-				default:
-                    k--;
-                    break;
+            // south
+            case 3:
+                k++;
+                break;
 
-                // south
-                case 3:
-                    k++;
-                    break;
+            // west
+            case 4:
+                i--;
+                break;
 
-                // west
-                case 4:
-                    i--;
-                    break;
+			// east
+			case 5:
+				i++;
+				break;
+		}
 
-				// east
-				case 5:
-					i++;
-					break;
-			}
+        if (world.getBlockId(i, j, k) == Block.brazierActive.id && !powered) {
+            world.setBlockWithNotify(i, j, k, Block.brazierInactive.id);
+            visualEffects(world, i, j, k);
+            return;
+        }
+        if (!powered) return;
 
-            if (world.getBlockId(i, j, k) == Block.tnt.id) {
-                world.setBlockWithNotify(i, j, k, 0);
-                EntityTNT tnt = new EntityTNT(world, i + 0.5F, j + 0.5F, k + 0.5F);
-                world.entityJoinedWorld(tnt);
-				world.playSoundAtEntity(null, tnt, "random.fuse", 1.0F, 1.0F);
+        if (world.getBlockId(i, j, k) == Block.tnt.id) {
+            world.setBlockWithNotify(i, j, k, 0);
+            EntityTNT tnt = new EntityTNT(world, i + 0.5F, j + 0.5F, k + 0.5F);
+            world.entityJoinedWorld(tnt);
+			world.playSoundAtEntity(null, tnt, "random.fuse", 1.0F, 1.0F);
+            return;
+        } else if (world.getBlockId(i, j, k) == Block.brazierInactive.id) {
+            world.setBlockWithNotify(i, j, k, Block.brazierActive.id);
+            visualEffects(world, i, j, k);
+            return;
+        }
+
+        List<Entity> entitiesInBoundingBox = world.getEntitiesWithinAABB(Entity.class, AABB.getBoundingBox(i, j, k, i + 1, j + 1, k + 1));
+        for (Entity entity : entitiesInBoundingBox) {
+            if (entity instanceof EntityCreeper) {
+                world.createExplosion(entity, entity.x, entity.y, entity.z, 3.0F);
+                entity.removed = true;
                 return;
             }
-
-            List<Entity> entitiesInBoundingBox = world.getEntitiesWithinAABB(Entity.class, AABB.getBoundingBox(i, j, k, i + 1, j + 1, k + 1));
-            for (Entity entity : entitiesInBoundingBox) {
-                if (entity instanceof EntityCreeper) {
-                    world.createExplosion(entity, entity.x, entity.y, entity.z, 3.0F);
-                    entity.removed = true;
-                    return;
-                }
-            }
-
-			world.setBlockWithNotify(i, j, k, Block.fire.id);
-			visualEffects(world, i, j, k);
         }
+
+        if (world.getBlockId(i, j, k) == 0) {
+      		world.setBlockWithNotify(i, j, k, Block.fire.id);
+  		}
+		visualEffects(world, i, j, k);
 	}
 
     private void visualEffects( World world, int i, int j, int k) {

@@ -2,7 +2,7 @@ package Olypolyu.randomoddities;
 
 import Olypolyu.randomoddities.blocks.RandomOdditiesBlocks;
 import Olypolyu.randomoddities.gui.components.ComponentCoinCounter;
-import Olypolyu.randomoddities.gui.components.ComponentHealthMeeter;
+import Olypolyu.randomoddities.gui.components.ComponentHealthMeter;
 import Olypolyu.randomoddities.gui.components.ComponentShield;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.hud.*;
@@ -45,16 +45,16 @@ public class RandomOdditiesClient implements ClientStartEntrypoint {
 	public void afterClientStart() {
     	COIN_COUNTER = HudComponents.register(new ComponentCoinCounter("randomoddities.coin_counter", new SnapLayout(HudComponents.HOTBAR, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
     	SHIELD_GLYPH = HudComponents.register(new ComponentShield("randomoddities.shield_glyph", new SnapLayout(COIN_COUNTER, ComponentAnchor.BOTTOM_RIGHT, ComponentAnchor.BOTTOM_LEFT)));
-    	HEALTH_MEETER = HudComponents.register(new ComponentHealthMeeter("randomoddities.health_meeter", new AbsoluteLayout(0.5f, 0.0f, ComponentAnchor.TOP_CENTER)));
+    	HEALTH_MEETER = HudComponents.register(new ComponentHealthMeter("randomoddities.health_meter", new AbsoluteLayout(0.5f, 0.0f, ComponentAnchor.TOP_CENTER)));
 
 		GameSettings gameSettings = Minecraft.getMinecraft(Minecraft.class).gameSettings;
 		OptionsPage optionsPage = new OptionsPage("options.randomoddities.title", RandomOdditiesBlocks.trampoline.getDefaultStack());
 
 		// declare options
-		putOption(new BooleanOption(gameSettings, "randomoddities.health_meeter", true));
+		putOption(new BooleanOption(gameSettings, "randomoddities.health_meter", true));
 
 		// insert options
-		optionsPage.withComponent(new BooleanOptionComponent((BooleanOption) getOption("health_meeter")));
+		optionsPage.withComponent(new BooleanOptionComponent((BooleanOption) getOption("health_meter")));
 
 		OptionsPages.register(optionsPage);
 		loadOptions();

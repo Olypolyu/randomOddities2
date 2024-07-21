@@ -84,7 +84,7 @@ public class RandomOdditiesRecipes {
 		RecipeSymbol[] paintScrapper = {
 			new RecipeSymbol(new ItemStack(Item.ingotIron)), new RecipeSymbol(new ItemStack(Item.stick)), new RecipeSymbol(new ItemStack(Item.stick))
 		};
-		WORKBENCH.register("paint_scrapper", new RecipeEntryCraftingShaped(1, 3, paintScrapper, new ItemStack(RandomOdditiesItems.paintScrapper)));
+		WORKBENCH.register("paint_scraper", new RecipeEntryCraftingShaped(1, 3, paintScrapper, new ItemStack(RandomOdditiesItems.paintScrapper)));
 
 		RANDOM_ODDITIES.register("workbench", WORKBENCH);
 	}

@@ -38,8 +38,8 @@ public class RandomOdditiesItems {
 
     	paintScrapper = new ItemBuilder(MOD_ID)
     	    .setItemModel(item -> new ItemModelStandard(item, MOD_ID).setFull3D())
-    	    .setIcon("randomoddities:item/paintBrush_scrapper")
-    	    .build(new ItemPaintScrapper("paint_scrapper", randomOdditiesIds++));
+    	    .setIcon("randomoddities:item/paintBrush_scraper")
+    	    .build(new ItemPaintScrapper("paint_scraper", randomOdditiesIds++));
 
     	coinStack = new ItemBuilder(MOD_ID)
     	    .setItemModel(item -> new ItemModelStandard(item, MOD_ID).setFull3D())

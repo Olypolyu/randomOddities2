@@ -32,7 +32,7 @@ public class TileEntityBubbleColumn extends TileEntity {
 	public void tick() {
         calculateColumnLength();
 
-        if (this.columnLength > 1) {
+        if (this.columnLength >= 1) {
             // get entities within bounding box, then yeet.
             List<Entity> entitiesInBoundingBox = this.worldObj.getEntitiesWithinAABB(Entity.class, AABB.getBoundingBox(this.x, this.y, this.z, this.x + 1, this.y + 0.6 + this.columnLength, this.z + 1));
 
