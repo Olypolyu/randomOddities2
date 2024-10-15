@@ -54,7 +54,7 @@ public class ComponentCoinCounter extends MovableHudComponent {
 
 	@Override
 	public boolean isVisible(Minecraft minecraft) {
-		return ((IRandomOdditiesCoinAmount) mc.thePlayer).randomOddities$getCoinAmount() > 0;
+		return mc.gameSettings.immersiveMode.drawHotbar() && ((IRandomOdditiesCoinAmount) mc.thePlayer).randomOddities$getCoinAmount() > 0;
 	}
 
 	@Override
